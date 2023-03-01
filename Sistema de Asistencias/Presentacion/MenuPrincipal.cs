@@ -16,5 +16,24 @@ namespace Sistema_de_Asistencias.Presentacion
         {
             InitializeComponent();
         }
+
+        private void MenuPrincipal_Load(object sender, EventArgs e)
+        {
+            labelBienvenida.Dock= DockStyle.Fill;
+        }
+
+        private void buttonConsultas_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonPersonal_Click(object sender, EventArgs e)
+        {
+            CUPersonal ControlPers = new CUPersonal();
+
+            panelBienvenida.Controls.Clear();
+            ControlPers.Dock= DockStyle.Fill;
+            panelBienvenida.Controls.Add(ControlPers);
+        }
     }
 }
