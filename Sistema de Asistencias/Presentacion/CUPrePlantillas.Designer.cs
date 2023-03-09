@@ -28,8 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // CUPrePlantillas
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Name = "CUPrePlantillas";
+            this.Size = new System.Drawing.Size(409, 403);
+            this.ResumeLayout(false);
+
         }
 
         #endregion

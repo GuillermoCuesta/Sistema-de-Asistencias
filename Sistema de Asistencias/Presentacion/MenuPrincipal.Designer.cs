@@ -69,7 +69,7 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.panelBienvenida = new System.Windows.Forms.Panel();
+            this.panelPrincipal = new System.Windows.Forms.Panel();
             this.labelBienvenida = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -85,7 +85,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.panel2.SuspendLayout();
-            this.panelBienvenida.SuspendLayout();
+            this.panelPrincipal.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -512,21 +512,21 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.LightGray;
-            this.panel2.Controls.Add(this.panelBienvenida);
+            this.panel2.Controls.Add(this.panelPrincipal);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(221, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(903, 738);
             this.panel2.TabIndex = 1;
             // 
-            // panelBienvenida
+            // panelPrincipal
             // 
-            this.panelBienvenida.Controls.Add(this.labelBienvenida);
-            this.panelBienvenida.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelBienvenida.Location = new System.Drawing.Point(0, 0);
-            this.panelBienvenida.Name = "panelBienvenida";
-            this.panelBienvenida.Size = new System.Drawing.Size(903, 738);
-            this.panelBienvenida.TabIndex = 0;
+            this.panelPrincipal.Controls.Add(this.labelBienvenida);
+            this.panelPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelPrincipal.Location = new System.Drawing.Point(0, 0);
+            this.panelPrincipal.Name = "panelPrincipal";
+            this.panelPrincipal.Size = new System.Drawing.Size(903, 738);
+            this.panelPrincipal.TabIndex = 0;
             // 
             // labelBienvenida
             // 
@@ -570,7 +570,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.panel2.ResumeLayout(false);
-            this.panelBienvenida.ResumeLayout(false);
+            this.panelPrincipal.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -614,7 +614,7 @@
         private System.Windows.Forms.Panel panel25;
         private System.Windows.Forms.Panel panel24;
         private System.Windows.Forms.Panel panel23;
-        private System.Windows.Forms.Panel panelBienvenida;
+        private System.Windows.Forms.Panel panelPrincipal;
         private System.Windows.Forms.Panel panel28;
         private System.Windows.Forms.Panel panel29;
         private System.Windows.Forms.Label labelBienvenida;

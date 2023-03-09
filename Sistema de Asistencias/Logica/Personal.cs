@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace Sistema_de_Asistencias.Logica
 {
-    public partial class Personal
+    public class Personal
     {
         public int IdPersonal { get; set; }
         public string Nombre { get; set; }

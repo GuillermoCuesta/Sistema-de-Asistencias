@@ -36,6 +36,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MaterialSkin, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialSkin.0.2.1\lib\MaterialSkin.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.1.1.1\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
@@ -301,15 +304,31 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Datos\DCargo.cs" />
+    <Compile Include="Datos\Conexion.cs" />
+    <Compile Include="Datos\DPais.cs" />
+    <Compile Include="Datos\DPersonal.cs" />
     <Compile Include="Logica\Cargo.cs" />
+    <Compile Include="Logica\Metodos.cs" />
     <Compile Include="Logica\Pais.cs" />
     <Compile Include="Logica\Personal.cs" />
-    <Compile Include="Logica\SistemadeGestiondeAsistenciasContext.cs" />
+    <Compile Include="Presentacion\CUCargo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\CUCargo.Designer.cs">
+      <DependentUpon>CUCargo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Presentacion\CUPersonal.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Presentacion\CUPersonal.Designer.cs">
       <DependentUpon>CUPersonal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\CURegistro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\CURegistro.Designer.cs">
+      <DependentUpon>CURegistro.cs</DependentUpon>
     </Compile>
     <Compile Include="Presentacion\MenuPrincipal.cs">
       <SubType>Form</SubType>
@@ -325,8 +344,17 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Presentacion\CUCargo.resx">
+      <DependentUpon>CUCargo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\CUPersonal.resx">
       <DependentUpon>CUPersonal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\CUPrePlantillas.resx">
+      <DependentUpon>CUPrePlantillas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\CURegistro.resx">
+      <DependentUpon>CURegistro.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\MenuPrincipal.resx">
       <DependentUpon>MenuPrincipal.cs</DependentUpon>
@@ -355,9 +383,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Datos\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="Resources\usuario.png" />
   </ItemGroup>

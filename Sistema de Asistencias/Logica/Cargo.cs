@@ -7,10 +7,10 @@ using System.Collections.Generic;
 
 namespace Sistema_de_Asistencias.Logica
 {
-    public partial class Cargo
+    public class Cargo
     {
         public int IdCargo { get; set; }
         public string NombreCargo { get; set; }
-        public decimal? SuledoHora { get; set; }
+        public decimal? SueldoHora { get; set; }
     }
 }

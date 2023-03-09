@@ -31,9 +31,9 @@ namespace Sistema_de_Asistencias.Presentacion
         {
             CUPersonal ControlPers = new CUPersonal();
 
-            panelBienvenida.Controls.Clear();
+            panelPrincipal.Controls.Clear();
             ControlPers.Dock= DockStyle.Fill;
-            panelBienvenida.Controls.Add(ControlPers);
+            panelPrincipal.Controls.Add(ControlPers);
         }
     }
 }
