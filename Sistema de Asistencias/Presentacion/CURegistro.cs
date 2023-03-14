@@ -1,13 +1,7 @@
 ﻿using Sistema_de_Asistencias.Datos;
 using Sistema_de_Asistencias.Logica;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Sistema_de_Asistencias.Presentacion
@@ -17,6 +11,7 @@ namespace Sistema_de_Asistencias.Presentacion
         public CURegistro()
         {
             InitializeComponent();
+            Show();
         }
 
         private static void buttonAddCargo_Click(object sender, EventArgs e)
@@ -56,8 +51,16 @@ namespace Sistema_de_Asistencias.Presentacion
 
         private void buttonGuardarPersonal_Click(object sender, EventArgs e)
         {
-            InsertarPersonal();
-            limpiar();
+            if (!string.IsNullOrEmpty(textBoxNomApell.Text) && !string.IsNullOrEmpty(textBoxIdent.Text) && !string.IsNullOrEmpty(comboBoxPais.Text) && !string.IsNullOrEmpty(comboBoxCargo.Text) && !string.IsNullOrEmpty(textBoxSueldo.Text))
+            {
+                InsertarPersonal(); 
+                limpiar();
+            }
+            else
+            {
+                MessageBox.Show("Todos los campos son obligatorios");
+            }
+            
         }
 
         public void CargarCargos()
@@ -66,6 +69,7 @@ namespace Sistema_de_Asistencias.Presentacion
             DataTable dt = new DataTable();
             cargarC.cargarCargo(ref dt);
             comboBoxCargo.DataSource = dt;
+            comboBoxCargo.ValueMember = "sueldoHora";
             comboBoxCargo.DisplayMember = "nombre_cargo";
             limpiar();
 
@@ -77,13 +81,6 @@ namespace Sistema_de_Asistencias.Presentacion
             limpiar();
         }
 
-        private void InsertarCargos()
-        {
-            Cargo parametros = new Cargo();
-            DCargo funcion = new DCargo();
-
-
-        }
         private void CURegistro_Load(object sender, EventArgs e)
         {
             CargarCargos();
@@ -98,6 +95,49 @@ namespace Sistema_de_Asistencias.Presentacion
         private void textBoxSueldo_KeyPress(object sender, KeyPressEventArgs e)
         {
             Metodos.ValidarSueldo(e);
+        }
+
+        private void comboBoxCargo_TextChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void comboBoxCargo_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            string indice =Convert.ToString( comboBoxCargo.SelectedValue);
+
+            textBoxSueldo.Text = indice;
+        }
+
+        public void EditarRegistro(Personal parametros)
+        {
+            textBoxNomApell.Text = parametros.Nombre;
+            textBoxIdent.Text = parametros.Identificacion;
+            comboBoxPais.SelectedIndex = (int)parametros.IdPais;
+            comboBoxCargo.SelectedIndex = (int)parametros.IdCargo;
+            textBoxEstado.Text = parametros.Estado;
+            textBoxCodigo.Text = parametros.Codigo;
+            textBoxSueldo.Text = parametros.SueldoHora.ToString();
+        }
+
+        private void buttonGuardarCamPersonal_Click(object sender, EventArgs e)
+        {
+            GuardarCambios();
+        }
+
+        private void GuardarCambios()
+        {
+            Personal parametros = new Personal();
+            DPersonal funcion = new DPersonal();
+
+            parametros.Nombre = textBoxNomApell.Text;
+            parametros.Identificacion = textBoxIdent.Text;
+            parametros.IdPais = comboBoxPais.SelectedIndex;
+            parametros.IdCargo = comboBoxCargo.SelectedIndex;
+            parametros.SueldoHora = Convert.ToDecimal(textBoxSueldo.Text);
+            parametros.Estado = textBoxEstado.Text ;
+            parametros.Codigo = textBoxCodigo.Text ;
+
+            funcion.EditarPersonal(parametros);
         }
     }
 }

@@ -1,8 +1,4 @@
-﻿using Sistema_de_Asistencias.Presentacion;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System;
 using System.Windows.Forms;
 
 namespace Sistema_de_Asistencias
@@ -17,7 +13,7 @@ namespace Sistema_de_Asistencias
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MenuPrincipal());
+            Application.Run(new Presentacion.MenuPrincipal());
         }
     }
 }

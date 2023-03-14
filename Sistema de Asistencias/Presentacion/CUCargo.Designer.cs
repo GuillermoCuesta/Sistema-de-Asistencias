@@ -28,9 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelCargo = new System.Windows.Forms.Panel();
+            this.buttonPanelCargo = new System.Windows.Forms.Button();
             this.buttonRegresarCargo = new System.Windows.Forms.Button();
             this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
             this.buttonGuardarCarg = new System.Windows.Forms.Button();
@@ -50,6 +51,7 @@
             // 
             this.panelCargo.BackColor = System.Drawing.Color.LightGray;
             this.panelCargo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelCargo.Controls.Add(this.buttonPanelCargo);
             this.panelCargo.Controls.Add(this.buttonRegresarCargo);
             this.panelCargo.Controls.Add(this.flowLayoutPanel4);
             this.panelCargo.Controls.Add(this.textBoxCargoNew);
@@ -63,11 +65,23 @@
             this.panelCargo.Size = new System.Drawing.Size(532, 335);
             this.panelCargo.TabIndex = 7;
             // 
+            // buttonPanelCargo
+            // 
+            this.buttonPanelCargo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonPanelCargo.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.buttonPanelCargo.Image = global::Sistema_de_Asistencias.Properties.Resources.primera;
+            this.buttonPanelCargo.Location = new System.Drawing.Point(494, 42);
+            this.buttonPanelCargo.Name = "buttonPanelCargo";
+            this.buttonPanelCargo.Size = new System.Drawing.Size(34, 33);
+            this.buttonPanelCargo.TabIndex = 21;
+            this.buttonPanelCargo.UseVisualStyleBackColor = true;
+            this.buttonPanelCargo.Click += new System.EventHandler(this.button1_Click);
+            // 
             // buttonRegresarCargo
             // 
             this.buttonRegresarCargo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonRegresarCargo.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonRegresarCargo.Image = global::Sistema_de_Asistencias.Properties.Resources.girar_a_la_izquierda;
+            this.buttonRegresarCargo.Image = global::Sistema_de_Asistencias.Properties.Resources.cerrar;
             this.buttonRegresarCargo.Location = new System.Drawing.Point(494, 3);
             this.buttonRegresarCargo.Name = "buttonRegresarCargo";
             this.buttonRegresarCargo.Size = new System.Drawing.Size(34, 33);
@@ -153,14 +167,14 @@
             this.ListadoCargos.AllowUserToResizeRows = false;
             this.ListadoCargos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
             this.ListadoCargos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Arial Narrow", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.ListadoCargos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Arial Narrow", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ListadoCargos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.ListadoCargos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ListadoCargos.Dock = System.Windows.Forms.DockStyle.Right;
             this.ListadoCargos.Location = new System.Drawing.Point(538, 0);
@@ -169,10 +183,10 @@
             this.ListadoCargos.RowHeadersVisible = false;
             this.ListadoCargos.RowHeadersWidth = 10;
             this.ListadoCargos.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.ListadoCargos.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.ListadoCargos.RowsDefaultCellStyle = dataGridViewCellStyle10;
             this.ListadoCargos.RowTemplate.Height = 24;
-            this.ListadoCargos.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.ListadoCargos.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.ListadoCargos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.ListadoCargos.Size = new System.Drawing.Size(267, 335);
             this.ListadoCargos.TabIndex = 8;
@@ -191,6 +205,8 @@
             this.Controls.Add(this.panelCargo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(805, 335);
+            this.MinimumSize = new System.Drawing.Size(538, 335);
             this.Name = "CUCargo";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -217,5 +233,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.DataGridView ListadoCargos;
         private Microsoft.Data.SqlClient.SqlCommandBuilder sqlCommandBuilder1;
+        private System.Windows.Forms.Button buttonPanelCargo;
     }
 }

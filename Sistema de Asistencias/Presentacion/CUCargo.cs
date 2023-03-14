@@ -1,13 +1,8 @@
 ﻿using Sistema_de_Asistencias.Datos;
 using Sistema_de_Asistencias.Logica;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Sistema_de_Asistencias.Presentacion
@@ -97,16 +92,34 @@ namespace Sistema_de_Asistencias.Presentacion
 
         private void buttonGuardarCCarg_Click(object sender, EventArgs e)
         {
-            DCargo funcion = new DCargo();
-            Cargo parametros = new Cargo();
-
-            parametros.IdCargo = IDCargo;
-            parametros.NombreCargo = textBoxCargoNew.Text;
-            parametros.SueldoHora =Convert.ToDecimal(textBoxSueldoNew.Text);
-
-            if(funcion.EditarCargo(parametros) == true)
+            if (!string.IsNullOrEmpty(textBoxCargoNew.Text))
             {
-                limpiar();
+                if (!string.IsNullOrEmpty(textBoxSueldoNew.Text))
+                {
+                    DCargo funcion = new DCargo();
+                    Cargo parametros = new Cargo();
+
+                    parametros.IdCargo = IDCargo;
+                    parametros.NombreCargo = textBoxCargoNew.Text;
+                    parametros.SueldoHora = Convert.ToDecimal(textBoxSueldoNew.Text);
+
+                    if (funcion.EditarCargo(parametros) == true)
+                    {
+                        limpiar();
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se pude insertar al cargo", "Cargo no Creado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Agrege el Sueldo", "Falta el Suelto", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Agrege el Cargo", "Falta el Cargo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -119,6 +132,31 @@ namespace Sistema_de_Asistencias.Presentacion
 
         private void CUCargo_Load(object sender, EventArgs e)
         {
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (ListadoCargos.Visible == true)
+            {
+                ListadoCargos.Visible = false;
+
+                Width = MinimumSize.Width;
+                Height = MinimumSize.Height;
+                buttonPanelCargo.Image = Sistema_de_Asistencias.Properties.Resources.ultima;
+
+                CenterToScreen();
+            }
+            else
+            {
+                ListadoCargos.Visible = true;
+                Width = MaximumSize.Width;
+                Height = MaximumSize.Height;
+                buttonPanelCargo.Image = Sistema_de_Asistencias.Properties.Resources.primera;
+                CenterToScreen();
+
+            }
+
+
         }
     }
 

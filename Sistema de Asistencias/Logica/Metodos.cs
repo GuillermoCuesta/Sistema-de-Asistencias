@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Sistema_de_Asistencias.Logica
 {
-    public  class Metodos
+    public class Metodos
     {
         public static void ValidarSueldo(KeyPressEventArgs e)
         {
@@ -31,13 +27,26 @@ namespace Sistema_de_Asistencias.Logica
             ListadoCargo.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             ListadoCargo.BackgroundColor = Color.FromArgb(0, 136, 204);
             ListadoCargo.EnableHeadersVisualStyles = false;
-            ListadoCargo.BorderStyle= BorderStyle.FixedSingle;
+            ListadoCargo.BorderStyle = BorderStyle.FixedSingle;
             ListadoCargo.CellBorderStyle = DataGridViewCellBorderStyle.None;
             ListadoCargo.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
 
             DataGridViewCellStyle cabecera = new DataGridViewCellStyle();
             cabecera.Font = new Font("Segeo UI", 10, FontStyle.Bold);
-            
+
+        }
+
+        public static void DiseñoEliminados(ref DataGridView ListadoCargo)
+        {
+            foreach (DataGridViewRow row in ListadoCargo.Rows)
+            {
+                string estado;
+                estado = row.Cells["estado"].Value.ToString();
+                if (estado == "Eliminado")
+                {
+                    row.DefaultCellStyle.ForeColor = Color.Red;
+                }
+            }
         }
     }
 }
