@@ -13,7 +13,7 @@ namespace Sistema_de_Asistencias
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Presentacion.MenuPrincipal());
+            Application.Run(new Presentacion.TomarAsistencia());
         }
     }
 }

@@ -28,13 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CURegistro));
             this.panelRegistro = new System.Windows.Forms.Panel();
+            this.textBoxCodigo = new System.Windows.Forms.TextBox();
+            this.labelCodigo = new System.Windows.Forms.Label();
+            this.labelEstado = new System.Windows.Forms.Label();
             this.comboBoxCargo = new System.Windows.Forms.ComboBox();
-            this.buttonVolver = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.buttonGuardarPersonal = new System.Windows.Forms.Button();
             this.buttonGuardarCamPersonal = new System.Windows.Forms.Button();
-            this.buttonAddCargo = new System.Windows.Forms.Button();
             this.comboBoxPais = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.textBoxSueldo = new System.Windows.Forms.TextBox();
@@ -44,12 +46,15 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBoxEstado = new System.Windows.Forms.TextBox();
-            this.labelEstado = new System.Windows.Forms.Label();
-            this.textBoxCodigo = new System.Windows.Forms.TextBox();
-            this.labelCodigo = new System.Windows.Forms.Label();
+            this.buttonVolver = new System.Windows.Forms.Button();
+            this.pictureBoxUsuario = new System.Windows.Forms.PictureBox();
+            this.buttonAddCargo = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.comboBoxEstado = new System.Windows.Forms.ComboBox();
+            this.buttonTomarFoto = new System.Windows.Forms.Button();
             this.panelRegistro.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUsuario)).BeginInit();
             this.SuspendLayout();
             // 
             // panelRegistro
@@ -57,9 +62,12 @@
             this.panelRegistro.BackColor = System.Drawing.Color.Silver;
             this.panelRegistro.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.panelRegistro.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelRegistro.Controls.Add(this.buttonTomarFoto);
+            this.panelRegistro.Controls.Add(this.comboBoxEstado);
+            this.panelRegistro.Controls.Add(this.panel1);
+            this.panelRegistro.Controls.Add(this.pictureBoxUsuario);
             this.panelRegistro.Controls.Add(this.textBoxCodigo);
             this.panelRegistro.Controls.Add(this.labelCodigo);
-            this.panelRegistro.Controls.Add(this.textBoxEstado);
             this.panelRegistro.Controls.Add(this.labelEstado);
             this.panelRegistro.Controls.Add(this.comboBoxCargo);
             this.panelRegistro.Controls.Add(this.buttonVolver);
@@ -78,8 +86,37 @@
             this.panelRegistro.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panelRegistro.Location = new System.Drawing.Point(0, 0);
             this.panelRegistro.Name = "panelRegistro";
-            this.panelRegistro.Size = new System.Drawing.Size(800, 374);
+            this.panelRegistro.Size = new System.Drawing.Size(1023, 316);
             this.panelRegistro.TabIndex = 6;
+            // 
+            // textBoxCodigo
+            // 
+            this.textBoxCodigo.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.textBoxCodigo.Font = new System.Drawing.Font("Arial Narrow", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxCodigo.Location = new System.Drawing.Point(631, 251);
+            this.textBoxCodigo.Name = "textBoxCodigo";
+            this.textBoxCodigo.Size = new System.Drawing.Size(52, 27);
+            this.textBoxCodigo.TabIndex = 18;
+            // 
+            // labelCodigo
+            // 
+            this.labelCodigo.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelCodigo.AutoSize = true;
+            this.labelCodigo.Location = new System.Drawing.Point(540, 251);
+            this.labelCodigo.Name = "labelCodigo";
+            this.labelCodigo.Size = new System.Drawing.Size(75, 25);
+            this.labelCodigo.TabIndex = 17;
+            this.labelCodigo.Text = "Codigo";
+            // 
+            // labelEstado
+            // 
+            this.labelEstado.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelEstado.AutoSize = true;
+            this.labelEstado.Location = new System.Drawing.Point(307, 251);
+            this.labelEstado.Name = "labelEstado";
+            this.labelEstado.Size = new System.Drawing.Size(73, 25);
+            this.labelEstado.TabIndex = 15;
+            this.labelEstado.Text = "Estado";
             // 
             // comboBoxCargo
             // 
@@ -87,31 +124,19 @@
             this.comboBoxCargo.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.comboBoxCargo.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.comboBoxCargo.FormattingEnabled = true;
-            this.comboBoxCargo.Location = new System.Drawing.Point(249, 194);
+            this.comboBoxCargo.Location = new System.Drawing.Point(485, 152);
             this.comboBoxCargo.Name = "comboBoxCargo";
             this.comboBoxCargo.Size = new System.Drawing.Size(240, 33);
             this.comboBoxCargo.TabIndex = 14;
             this.comboBoxCargo.SelectionChangeCommitted += new System.EventHandler(this.comboBoxCargo_SelectionChangeCommitted);
             this.comboBoxCargo.TextChanged += new System.EventHandler(this.comboBoxCargo_TextChanged);
             // 
-            // buttonVolver
-            // 
-            this.buttonVolver.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonVolver.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonVolver.Image = global::Sistema_de_Asistencias.Properties.Resources.cerrar;
-            this.buttonVolver.Location = new System.Drawing.Point(753, 0);
-            this.buttonVolver.Name = "buttonVolver";
-            this.buttonVolver.Size = new System.Drawing.Size(45, 41);
-            this.buttonVolver.TabIndex = 13;
-            this.buttonVolver.UseVisualStyleBackColor = true;
-            this.buttonVolver.Click += new System.EventHandler(this.buttonVolver_Click);
-            // 
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.flowLayoutPanel1.Controls.Add(this.buttonGuardarPersonal);
             this.flowLayoutPanel1.Controls.Add(this.buttonGuardarCamPersonal);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(484, 303);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(720, 261);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(298, 45);
             this.flowLayoutPanel1.TabIndex = 12;
@@ -138,29 +163,13 @@
             this.buttonGuardarCamPersonal.UseVisualStyleBackColor = true;
             this.buttonGuardarCamPersonal.Click += new System.EventHandler(this.buttonGuardarCamPersonal_Click);
             // 
-            // buttonAddCargo
-            // 
-            this.buttonAddCargo.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buttonAddCargo.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonAddCargo.FlatAppearance.BorderSize = 0;
-            this.buttonAddCargo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonAddCargo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonAddCargo.Image = global::Sistema_de_Asistencias.Properties.Resources.boton_agregar;
-            this.buttonAddCargo.Location = new System.Drawing.Point(590, 189);
-            this.buttonAddCargo.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonAddCargo.Name = "buttonAddCargo";
-            this.buttonAddCargo.Size = new System.Drawing.Size(45, 44);
-            this.buttonAddCargo.TabIndex = 11;
-            this.buttonAddCargo.UseVisualStyleBackColor = true;
-            this.buttonAddCargo.Click += new System.EventHandler(this.buttonAddCargo_Click_1);
-            // 
             // comboBoxPais
             // 
             this.comboBoxPais.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.comboBoxPais.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.comboBoxPais.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.comboBoxPais.FormattingEnabled = true;
-            this.comboBoxPais.Location = new System.Drawing.Point(250, 143);
+            this.comboBoxPais.Location = new System.Drawing.Point(486, 101);
             this.comboBoxPais.Name = "comboBoxPais";
             this.comboBoxPais.Size = new System.Drawing.Size(240, 33);
             this.comboBoxPais.Sorted = true;
@@ -170,7 +179,7 @@
             // 
             this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(158, 193);
+            this.label5.Location = new System.Drawing.Point(394, 151);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(66, 25);
             this.label5.TabIndex = 8;
@@ -180,7 +189,7 @@
             // 
             this.textBoxSueldo.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.textBoxSueldo.Font = new System.Drawing.Font("Arial Narrow", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxSueldo.Location = new System.Drawing.Point(249, 246);
+            this.textBoxSueldo.Location = new System.Drawing.Point(485, 204);
             this.textBoxSueldo.Name = "textBoxSueldo";
             this.textBoxSueldo.Size = new System.Drawing.Size(163, 27);
             this.textBoxSueldo.TabIndex = 7;
@@ -190,7 +199,7 @@
             // 
             this.textBoxIdent.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.textBoxIdent.Font = new System.Drawing.Font("Arial Narrow", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxIdent.Location = new System.Drawing.Point(249, 99);
+            this.textBoxIdent.Location = new System.Drawing.Point(485, 57);
             this.textBoxIdent.Name = "textBoxIdent";
             this.textBoxIdent.Size = new System.Drawing.Size(197, 27);
             this.textBoxIdent.TabIndex = 5;
@@ -199,7 +208,7 @@
             // 
             this.textBoxNomApell.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.textBoxNomApell.Font = new System.Drawing.Font("Arial Narrow", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxNomApell.Location = new System.Drawing.Point(249, 58);
+            this.textBoxNomApell.Location = new System.Drawing.Point(485, 16);
             this.textBoxNomApell.Name = "textBoxNomApell";
             this.textBoxNomApell.Size = new System.Drawing.Size(472, 27);
             this.textBoxNomApell.TabIndex = 4;
@@ -208,7 +217,7 @@
             // 
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(70, 246);
+            this.label4.Location = new System.Drawing.Point(306, 204);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(154, 25);
             this.label4.TabIndex = 3;
@@ -218,7 +227,7 @@
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(174, 143);
+            this.label3.Location = new System.Drawing.Point(410, 101);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(50, 25);
             this.label3.TabIndex = 2;
@@ -228,7 +237,7 @@
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(99, 99);
+            this.label2.Location = new System.Drawing.Point(335, 57);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(125, 25);
             this.label2.TabIndex = 1;
@@ -238,49 +247,80 @@
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(53, 58);
+            this.label1.Location = new System.Drawing.Point(289, 16);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(171, 25);
             this.label1.TabIndex = 0;
             this.label1.Text = "Nombre y Apellido";
             // 
-            // textBoxEstado
+            // buttonVolver
             // 
-            this.textBoxEstado.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBoxEstado.Font = new System.Drawing.Font("Arial Narrow", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxEstado.Location = new System.Drawing.Point(151, 293);
-            this.textBoxEstado.Name = "textBoxEstado";
-            this.textBoxEstado.Size = new System.Drawing.Size(121, 27);
-            this.textBoxEstado.TabIndex = 16;
+            this.buttonVolver.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonVolver.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.buttonVolver.Image = global::Sistema_de_Asistencias.Properties.Resources.cerrar;
+            this.buttonVolver.Location = new System.Drawing.Point(976, 0);
+            this.buttonVolver.Name = "buttonVolver";
+            this.buttonVolver.Size = new System.Drawing.Size(45, 41);
+            this.buttonVolver.TabIndex = 13;
+            this.buttonVolver.UseVisualStyleBackColor = true;
+            this.buttonVolver.Click += new System.EventHandler(this.buttonVolver_Click);
             // 
-            // labelEstado
+            // pictureBoxUsuario
             // 
-            this.labelEstado.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.labelEstado.AutoSize = true;
-            this.labelEstado.Location = new System.Drawing.Point(71, 293);
-            this.labelEstado.Name = "labelEstado";
-            this.labelEstado.Size = new System.Drawing.Size(73, 25);
-            this.labelEstado.TabIndex = 15;
-            this.labelEstado.Text = "Estado";
+            this.pictureBoxUsuario.Image = global::Sistema_de_Asistencias.Properties.Resources.usuario2;
+            this.pictureBoxUsuario.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBoxUsuario.InitialImage")));
+            this.pictureBoxUsuario.Location = new System.Drawing.Point(26, 10);
+            this.pictureBoxUsuario.Name = "pictureBoxUsuario";
+            this.pictureBoxUsuario.Size = new System.Drawing.Size(209, 260);
+            this.pictureBoxUsuario.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxUsuario.TabIndex = 19;
+            this.pictureBoxUsuario.TabStop = false;
             // 
-            // textBoxCodigo
+            // buttonAddCargo
             // 
-            this.textBoxCodigo.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBoxCodigo.Font = new System.Drawing.Font("Arial Narrow", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxCodigo.Location = new System.Drawing.Point(395, 293);
-            this.textBoxCodigo.Name = "textBoxCodigo";
-            this.textBoxCodigo.Size = new System.Drawing.Size(52, 27);
-            this.textBoxCodigo.TabIndex = 18;
+            this.buttonAddCargo.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonAddCargo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonAddCargo.FlatAppearance.BorderSize = 0;
+            this.buttonAddCargo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonAddCargo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonAddCargo.Image = global::Sistema_de_Asistencias.Properties.Resources.boton_agregar;
+            this.buttonAddCargo.Location = new System.Drawing.Point(826, 147);
+            this.buttonAddCargo.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonAddCargo.Name = "buttonAddCargo";
+            this.buttonAddCargo.Size = new System.Drawing.Size(45, 44);
+            this.buttonAddCargo.TabIndex = 11;
+            this.buttonAddCargo.UseVisualStyleBackColor = true;
+            this.buttonAddCargo.Click += new System.EventHandler(this.buttonAddCargo_Click_1);
             // 
-            // labelCodigo
+            // panel1
             // 
-            this.labelCodigo.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.labelCodigo.AutoSize = true;
-            this.labelCodigo.Location = new System.Drawing.Point(304, 293);
-            this.labelCodigo.Name = "labelCodigo";
-            this.labelCodigo.Size = new System.Drawing.Size(75, 25);
-            this.labelCodigo.TabIndex = 17;
-            this.labelCodigo.Text = "Codigo";
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(136)))), ((int)(((byte)(204)))));
+            this.panel1.Location = new System.Drawing.Point(253, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(10, 316);
+            this.panel1.TabIndex = 20;
+            // 
+            // comboBoxEstado
+            // 
+            this.comboBoxEstado.FormattingEnabled = true;
+            this.comboBoxEstado.Items.AddRange(new object[] {
+            "Activo",
+            "Eliminado"});
+            this.comboBoxEstado.Location = new System.Drawing.Point(386, 251);
+            this.comboBoxEstado.Name = "comboBoxEstado";
+            this.comboBoxEstado.Size = new System.Drawing.Size(133, 33);
+            this.comboBoxEstado.TabIndex = 21;
+            // 
+            // buttonTomarFoto
+            // 
+            this.buttonTomarFoto.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.buttonTomarFoto.Location = new System.Drawing.Point(69, 279);
+            this.buttonTomarFoto.Name = "buttonTomarFoto";
+            this.buttonTomarFoto.Size = new System.Drawing.Size(119, 27);
+            this.buttonTomarFoto.TabIndex = 22;
+            this.buttonTomarFoto.Text = "Tomar Foto";
+            this.buttonTomarFoto.UseVisualStyleBackColor = true;
+            this.buttonTomarFoto.Click += new System.EventHandler(this.buttonTomarFoto_Click);
             // 
             // CURegistro
             // 
@@ -288,7 +328,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.CancelButton = this.buttonVolver;
-            this.ClientSize = new System.Drawing.Size(800, 374);
+            this.ClientSize = new System.Drawing.Size(1023, 316);
             this.Controls.Add(this.panelRegistro);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "CURegistro";
@@ -298,6 +338,7 @@
             this.panelRegistro.ResumeLayout(false);
             this.panelRegistro.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUsuario)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -322,7 +363,10 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBoxCodigo;
         private System.Windows.Forms.Label labelCodigo;
-        private System.Windows.Forms.TextBox textBoxEstado;
         private System.Windows.Forms.Label labelEstado;
+        private System.Windows.Forms.PictureBox pictureBoxUsuario;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.ComboBox comboBoxEstado;
+        private System.Windows.Forms.Button buttonTomarFoto;
     }
 }

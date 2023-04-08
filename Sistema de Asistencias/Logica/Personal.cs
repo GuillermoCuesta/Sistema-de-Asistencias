@@ -14,5 +14,6 @@ namespace Sistema_de_Asistencias.Logica
         public decimal? SueldoHora { get; set; }
         public string Estado { get; set; }
         public string Codigo { get; set; }
+        public byte[] foto { get; set; }
     }
 }

@@ -2,6 +2,8 @@
 using Sistema_de_Asistencias.Logica;
 using System;
 using System.Data;
+using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 
 namespace Sistema_de_Asistencias.Presentacion
@@ -109,6 +111,8 @@ namespace Sistema_de_Asistencias.Presentacion
             dataGridView1.DataSource = dt;
             dataGridView1.Columns[5].Visible = false;
             dataGridView1.Columns[8].Visible = false;
+            dataGridView1.Columns[9].Visible = false;
+
             Metodos.DiseñoEliminados(ref dataGridView1);
         }
 
@@ -117,6 +121,7 @@ namespace Sistema_de_Asistencias.Presentacion
             try
             {
                 CURegistro EditRegistro = new CURegistro();
+                DPersonal funcion = new DPersonal();
                 Personal parametros = new Personal();
 
                 parametros.IdPersonal = (int)dataGridView1.SelectedCells[0].Value;
@@ -128,7 +133,27 @@ namespace Sistema_de_Asistencias.Presentacion
                 parametros.Codigo = (string)dataGridView1.SelectedCells[7].Value;
                 parametros.IdPais = (int?)dataGridView1.SelectedCells[8].Value;
 
+                //if (dataGridView1.SelectedCells[9].Value.ToString() != "")
+                //{
+                try
+                {
+                    parametros.foto = (byte[])(dataGridView1.SelectedCells[9].Value);
+                }
+                catch (Exception e)
+                {
+                    Image imgDefault = Properties.Resources.usuario2; // Cargar imagen predeterminada desde recursos
+                    using (var ms = new MemoryStream())
+                    {
+                        imgDefault.Save(ms, System.Drawing.Imaging.ImageFormat.Png); // Guardar imagen en memoria
+                        parametros.foto = ms.ToArray(); // Asignar la imagen como un array de bytes al parámetro
+                    }
+                }
+
+
+                //}
+
                 EditRegistro.EditarRegistro(parametros);
+                
             }
             catch (Exception e)
             {
@@ -187,6 +212,8 @@ namespace Sistema_de_Asistencias.Presentacion
         {
             desde = 1;
             hasta = 5;
+
+            PagActual = 1;
 
             Contar();
             Paginar();

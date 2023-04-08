@@ -22,6 +22,10 @@ namespace Sistema_de_Asistencias.Datos
                 cmd.Parameters.AddWithValue("@id_pais", parametros.IdPais);
                 cmd.Parameters.AddWithValue("@id_cargo", parametros.IdCargo);
                 cmd.Parameters.AddWithValue("@sueldoHora", parametros.SueldoHora);
+                cmd.Parameters.AddWithValue("@estado", parametros.Estado);
+                cmd.Parameters.AddWithValue("@codigo", parametros.Codigo);
+                cmd.Parameters.AddWithValue("@foto", parametros.foto);
+
                 cmd.ExecuteNonQuery();
                 return true;
 
@@ -55,6 +59,7 @@ namespace Sistema_de_Asistencias.Datos
                 cmd.Parameters.AddWithValue("@sueldoHora", parametros.SueldoHora);
                 cmd.Parameters.AddWithValue("@estado", parametros.Estado);
                 cmd.Parameters.AddWithValue("@codigo", parametros.Codigo);
+                cmd.Parameters.AddWithValue("@foto", parametros.foto);
                 cmd.ExecuteNonQuery();
                 return true;
 
@@ -106,6 +111,25 @@ namespace Sistema_de_Asistencias.Datos
                 ad.SelectCommand.CommandType = CommandType.StoredProcedure;
                 //ad.SelectCommand.Parameters.AddWithValue("@Desde", desde);
                 //ad.SelectCommand.Parameters.AddWithValue("@hasta", hasta);
+                ad.SelectCommand.Parameters.AddWithValue("@Buscador", buscador);
+
+
+                ad.Fill(dt);
+            }
+            catch (Exception e)
+            {
+
+                MessageBox.Show(e.StackTrace);
+            }
+
+        }
+
+        public void BuscarPersonalIdent(ref DataTable dt, string buscador)
+        {
+            try
+            {
+                SqlDataAdapter ad = new SqlDataAdapter("BuscarPersonalIdent", Conexion.conectar);
+                ad.SelectCommand.CommandType = CommandType.StoredProcedure;
                 ad.SelectCommand.Parameters.AddWithValue("@Buscador", buscador);
 
 
