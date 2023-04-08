@@ -44,9 +44,9 @@
             this.labelRegistroAsis = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.textBoxIdentAsis = new System.Windows.Forms.TextBox();
-            this.labelEstado = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.timerHora = new System.Windows.Forms.Timer(this.components);
+            this.labelDatosEntrada = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -57,6 +57,7 @@
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.labelDatosEntrada);
             this.panel1.Controls.Add(this.labelNombre);
             this.panel1.Controls.Add(this.labelObser);
             this.panel1.Controls.Add(this.textBoxObservaciones);
@@ -66,7 +67,6 @@
             this.panel1.Controls.Add(this.labelRegistroAsis);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.textBoxIdentAsis);
-            this.panel1.Controls.Add(this.labelEstado);
             this.panel1.ForeColor = System.Drawing.Color.DimGray;
             this.panel1.Location = new System.Drawing.Point(221, 38);
             this.panel1.Name = "panel1";
@@ -93,11 +93,11 @@
             this.labelObser.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.labelObser.Font = new System.Drawing.Font("Arial", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelObser.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.labelObser.Location = new System.Drawing.Point(108, 513);
+            this.labelObser.Location = new System.Drawing.Point(108, 552);
             this.labelObser.Margin = new System.Windows.Forms.Padding(10);
             this.labelObser.Name = "labelObser";
             this.labelObser.Padding = new System.Windows.Forms.Padding(10);
-            this.labelObser.Size = new System.Drawing.Size(351, 60);
+            this.labelObser.Size = new System.Drawing.Size(351, 54);
             this.labelObser.TabIndex = 8;
             this.labelObser.Text = "Observaciones";
             this.labelObser.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -107,12 +107,12 @@
             this.textBoxObservaciones.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.textBoxObservaciones.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxObservaciones.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxObservaciones.Location = new System.Drawing.Point(94, 581);
+            this.textBoxObservaciones.Location = new System.Drawing.Point(94, 621);
             this.textBoxObservaciones.Margin = new System.Windows.Forms.Padding(10);
             this.textBoxObservaciones.Multiline = true;
             this.textBoxObservaciones.Name = "textBoxObservaciones";
             this.textBoxObservaciones.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxObservaciones.Size = new System.Drawing.Size(380, 162);
+            this.textBoxObservaciones.Size = new System.Drawing.Size(380, 122);
             this.textBoxObservaciones.TabIndex = 4;
             // 
             // buttonBuscar
@@ -123,7 +123,7 @@
             this.buttonBuscar.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonBuscar.ForeColor = System.Drawing.Color.White;
             this.buttonBuscar.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.buttonBuscar.Location = new System.Drawing.Point(358, 297);
+            this.buttonBuscar.Location = new System.Drawing.Point(358, 293);
             this.buttonBuscar.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
             this.buttonBuscar.Name = "buttonBuscar";
             this.buttonBuscar.Size = new System.Drawing.Size(101, 38);
@@ -144,7 +144,7 @@
             this.tableLayoutPanel1.Controls.Add(this.labelHora, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.labelFecha, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.labelH, 0, 1);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(108, 400);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(108, 442);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -256,24 +256,12 @@
             this.textBoxIdentAsis.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.textBoxIdentAsis.Font = new System.Drawing.Font("Arial Narrow", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxIdentAsis.ForeColor = System.Drawing.Color.Gray;
-            this.textBoxIdentAsis.Location = new System.Drawing.Point(94, 297);
+            this.textBoxIdentAsis.Location = new System.Drawing.Point(94, 293);
             this.textBoxIdentAsis.Name = "textBoxIdentAsis";
             this.textBoxIdentAsis.Size = new System.Drawing.Size(260, 38);
             this.textBoxIdentAsis.TabIndex = 2;
             this.textBoxIdentAsis.Text = "Identificacion";
             this.textBoxIdentAsis.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // labelEstado
-            // 
-            this.labelEstado.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.labelEstado.Font = new System.Drawing.Font("Arial", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelEstado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(136)))), ((int)(((byte)(204)))));
-            this.labelEstado.Location = new System.Drawing.Point(127, 354);
-            this.labelEstado.Name = "labelEstado";
-            this.labelEstado.Size = new System.Drawing.Size(304, 33);
-            this.labelEstado.TabIndex = 9;
-            this.labelEstado.Text = "---------------";
-            this.labelEstado.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel2
             // 
@@ -289,6 +277,18 @@
             // 
             this.timerHora.Enabled = true;
             this.timerHora.Tick += new System.EventHandler(this.timerHora_Tick);
+            // 
+            // labelDatosEntrada
+            // 
+            this.labelDatosEntrada.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelDatosEntrada.BackColor = System.Drawing.Color.Silver;
+            this.labelDatosEntrada.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDatosEntrada.ForeColor = System.Drawing.Color.Black;
+            this.labelDatosEntrada.Location = new System.Drawing.Point(94, 361);
+            this.labelDatosEntrada.Name = "labelDatosEntrada";
+            this.labelDatosEntrada.Size = new System.Drawing.Size(365, 62);
+            this.labelDatosEntrada.TabIndex = 14;
+            this.labelDatosEntrada.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // TomarAsistencia
             // 
@@ -323,10 +323,10 @@
         private System.Windows.Forms.Label labelFecha;
         private System.Windows.Forms.Label labelObser;
         private System.Windows.Forms.Timer timerHora;
-        private System.Windows.Forms.Label labelEstado;
         private System.Windows.Forms.Label labelNombre;
         private System.Windows.Forms.Button buttonConfirmar;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Button buttonBuscar;
+        private System.Windows.Forms.Label labelDatosEntrada;
     }
 }
