@@ -232,6 +232,7 @@
             this.buttonUsuarios.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.buttonUsuarios.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.buttonUsuarios.UseVisualStyleBackColor = false;
+            this.buttonUsuarios.Click += new System.EventHandler(this.buttonUsuarios_Click);
             // 
             // panel24
             // 
@@ -522,7 +523,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(221, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(903, 738);
+            this.panel2.Size = new System.Drawing.Size(945, 738);
             this.panel2.TabIndex = 1;
             // 
             // panelPrincipal
@@ -531,7 +532,7 @@
             this.panelPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelPrincipal.Location = new System.Drawing.Point(36, 0);
             this.panelPrincipal.Name = "panelPrincipal";
-            this.panelPrincipal.Size = new System.Drawing.Size(867, 738);
+            this.panelPrincipal.Size = new System.Drawing.Size(909, 738);
             this.panelPrincipal.TabIndex = 0;
             // 
             // labelBienvenida
@@ -539,7 +540,7 @@
             this.labelBienvenida.BackColor = System.Drawing.Color.Transparent;
             this.labelBienvenida.Font = new System.Drawing.Font("Microsoft Sans Serif", 60F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelBienvenida.ForeColor = System.Drawing.Color.Gray;
-            this.labelBienvenida.Location = new System.Drawing.Point(84, 56);
+            this.labelBienvenida.Location = new System.Drawing.Point(123, 60);
             this.labelBienvenida.Name = "labelBienvenida";
             this.labelBienvenida.Size = new System.Drawing.Size(687, 574);
             this.labelBienvenida.TabIndex = 0;
@@ -574,7 +575,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
             this.BackColor = System.Drawing.Color.DarkGray;
-            this.ClientSize = new System.Drawing.Size(1124, 738);
+            this.ClientSize = new System.Drawing.Size(1166, 738);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panelIzquierdo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;

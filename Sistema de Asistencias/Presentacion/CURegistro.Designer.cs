@@ -30,6 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CURegistro));
             this.panelRegistro = new System.Windows.Forms.Panel();
+            this.buttonTomarFoto = new System.Windows.Forms.Button();
+            this.comboBoxEstado = new System.Windows.Forms.ComboBox();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.textBoxCodigo = new System.Windows.Forms.TextBox();
             this.labelCodigo = new System.Windows.Forms.Label();
             this.labelEstado = new System.Windows.Forms.Label();
@@ -49,9 +52,6 @@
             this.buttonVolver = new System.Windows.Forms.Button();
             this.pictureBoxUsuario = new System.Windows.Forms.PictureBox();
             this.buttonAddCargo = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.comboBoxEstado = new System.Windows.Forms.ComboBox();
-            this.buttonTomarFoto = new System.Windows.Forms.Button();
             this.panelRegistro.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUsuario)).BeginInit();
@@ -88,6 +88,36 @@
             this.panelRegistro.Name = "panelRegistro";
             this.panelRegistro.Size = new System.Drawing.Size(1023, 316);
             this.panelRegistro.TabIndex = 6;
+            // 
+            // buttonTomarFoto
+            // 
+            this.buttonTomarFoto.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.buttonTomarFoto.Location = new System.Drawing.Point(69, 279);
+            this.buttonTomarFoto.Name = "buttonTomarFoto";
+            this.buttonTomarFoto.Size = new System.Drawing.Size(119, 27);
+            this.buttonTomarFoto.TabIndex = 22;
+            this.buttonTomarFoto.Text = "Tomar Foto";
+            this.buttonTomarFoto.UseVisualStyleBackColor = true;
+            this.buttonTomarFoto.Click += new System.EventHandler(this.buttonTomarFoto_Click);
+            // 
+            // comboBoxEstado
+            // 
+            this.comboBoxEstado.FormattingEnabled = true;
+            this.comboBoxEstado.Items.AddRange(new object[] {
+            "Activo",
+            "Eliminado"});
+            this.comboBoxEstado.Location = new System.Drawing.Point(386, 251);
+            this.comboBoxEstado.Name = "comboBoxEstado";
+            this.comboBoxEstado.Size = new System.Drawing.Size(133, 33);
+            this.comboBoxEstado.TabIndex = 21;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(136)))), ((int)(((byte)(204)))));
+            this.panel1.Location = new System.Drawing.Point(253, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(10, 316);
+            this.panel1.TabIndex = 20;
             // 
             // textBoxCodigo
             // 
@@ -291,36 +321,6 @@
             this.buttonAddCargo.TabIndex = 11;
             this.buttonAddCargo.UseVisualStyleBackColor = true;
             this.buttonAddCargo.Click += new System.EventHandler(this.buttonAddCargo_Click_1);
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(136)))), ((int)(((byte)(204)))));
-            this.panel1.Location = new System.Drawing.Point(253, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(10, 316);
-            this.panel1.TabIndex = 20;
-            // 
-            // comboBoxEstado
-            // 
-            this.comboBoxEstado.FormattingEnabled = true;
-            this.comboBoxEstado.Items.AddRange(new object[] {
-            "Activo",
-            "Eliminado"});
-            this.comboBoxEstado.Location = new System.Drawing.Point(386, 251);
-            this.comboBoxEstado.Name = "comboBoxEstado";
-            this.comboBoxEstado.Size = new System.Drawing.Size(133, 33);
-            this.comboBoxEstado.TabIndex = 21;
-            // 
-            // buttonTomarFoto
-            // 
-            this.buttonTomarFoto.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.buttonTomarFoto.Location = new System.Drawing.Point(69, 279);
-            this.buttonTomarFoto.Name = "buttonTomarFoto";
-            this.buttonTomarFoto.Size = new System.Drawing.Size(119, 27);
-            this.buttonTomarFoto.TabIndex = 22;
-            this.buttonTomarFoto.Text = "Tomar Foto";
-            this.buttonTomarFoto.UseVisualStyleBackColor = true;
-            this.buttonTomarFoto.Click += new System.EventHandler(this.buttonTomarFoto_Click);
             // 
             // CURegistro
             // 

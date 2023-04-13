@@ -171,7 +171,6 @@ namespace Sistema_de_Asistencias.Datos
             }
             catch (Exception)
             {
-
                 contador = 0;
             }
             finally { Conexion.cerrar(); }

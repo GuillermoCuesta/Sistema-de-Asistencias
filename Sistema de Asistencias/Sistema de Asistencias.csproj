@@ -323,13 +323,19 @@
     <Compile Include="Datos\DAsistencia.cs" />
     <Compile Include="Datos\DCargo.cs" />
     <Compile Include="Datos\Conexion.cs" />
+    <Compile Include="Datos\DModulo.cs" />
     <Compile Include="Datos\DPais.cs" />
+    <Compile Include="Datos\DPermiso.cs" />
     <Compile Include="Datos\DPersonal.cs" />
+    <Compile Include="Datos\DUsuario.cs" />
     <Compile Include="Logica\Asistencia.cs" />
     <Compile Include="Logica\Cargo.cs" />
     <Compile Include="Logica\Metodos.cs" />
+    <Compile Include="Logica\Modulo.cs" />
     <Compile Include="Logica\Pais.cs" />
+    <Compile Include="Logica\Permiso.cs" />
     <Compile Include="Logica\Personal.cs" />
+    <Compile Include="Logica\Usuario.cs" />
     <Compile Include="Presentacion\CapturarFoto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -353,6 +359,12 @@
     </Compile>
     <Compile Include="Presentacion\CURegistro.Designer.cs">
       <DependentUpon>CURegistro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\CUUsuario.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Presentacion\CUUsuario.Designer.cs">
+      <DependentUpon>CUUsuario.cs</DependentUpon>
     </Compile>
     <Compile Include="Presentacion\MenuPrincipal.cs">
       <SubType>Form</SubType>
@@ -388,6 +400,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\CURegistro.resx">
       <DependentUpon>CURegistro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\CUUsuario.resx">
+      <DependentUpon>CUUsuario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\MenuPrincipal.resx">
       <DependentUpon>MenuPrincipal.cs</DependentUpon>

@@ -29,13 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CUPersonal));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.buttonMostrar = new System.Windows.Forms.Button();
-            this.buttonAgregar = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.textBoxBuscarPers = new System.Windows.Forms.TextBox();
             this.panelPaginador = new System.Windows.Forms.Panel();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
@@ -44,10 +42,6 @@
             this.labelDe = new System.Windows.Forms.Label();
             this.labelDenominador = new System.Windows.Forms.Label();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.buttonPrimeraPg = new System.Windows.Forms.Button();
-            this.buttonAtras = new System.Windows.Forms.Button();
-            this.buttonAdelante = new System.Windows.Forms.Button();
-            this.buttonUltima = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -55,13 +49,19 @@
             this.buttonEditar = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.buttonPrimeraPg = new System.Windows.Forms.Button();
+            this.buttonAtras = new System.Windows.Forms.Button();
+            this.buttonAdelante = new System.Windows.Forms.Button();
+            this.buttonUltima = new System.Windows.Forms.Button();
+            this.buttonAgregar = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panelPaginador.SuspendLayout();
             this.flowLayoutPanel3.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -88,31 +88,6 @@
             this.buttonMostrar.Text = "Mostrar";
             this.buttonMostrar.UseVisualStyleBackColor = true;
             this.buttonMostrar.Click += new System.EventHandler(this.buttonMostrar_Click);
-            // 
-            // buttonAgregar
-            // 
-            this.buttonAgregar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonAgregar.Image = global::Sistema_de_Asistencias.Properties.Resources.agregar_usuario;
-            this.buttonAgregar.Location = new System.Drawing.Point(976, 21);
-            this.buttonAgregar.Name = "buttonAgregar";
-            this.buttonAgregar.Size = new System.Drawing.Size(67, 57);
-            this.buttonAgregar.TabIndex = 2;
-            this.buttonAgregar.UseVisualStyleBackColor = true;
-            this.buttonAgregar.Click += new System.EventHandler(this.buttonAgregar_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::Sistema_de_Asistencias.Properties.Resources.buscar;
-            this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
-            this.pictureBox1.Location = new System.Drawing.Point(397, 37);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(41, 41);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // textBoxBuscarPers
             // 
@@ -201,67 +176,29 @@
             this.flowLayoutPanel2.Size = new System.Drawing.Size(328, 41);
             this.flowLayoutPanel2.TabIndex = 0;
             // 
-            // buttonPrimeraPg
-            // 
-            this.buttonPrimeraPg.Image = global::Sistema_de_Asistencias.Properties.Resources.primera;
-            this.buttonPrimeraPg.Location = new System.Drawing.Point(3, 3);
-            this.buttonPrimeraPg.Name = "buttonPrimeraPg";
-            this.buttonPrimeraPg.Size = new System.Drawing.Size(75, 29);
-            this.buttonPrimeraPg.TabIndex = 0;
-            this.buttonPrimeraPg.UseVisualStyleBackColor = true;
-            // 
-            // buttonAtras
-            // 
-            this.buttonAtras.Image = global::Sistema_de_Asistencias.Properties.Resources.izquierda;
-            this.buttonAtras.Location = new System.Drawing.Point(84, 3);
-            this.buttonAtras.Name = "buttonAtras";
-            this.buttonAtras.Size = new System.Drawing.Size(75, 29);
-            this.buttonAtras.TabIndex = 1;
-            this.buttonAtras.UseVisualStyleBackColor = true;
-            this.buttonAtras.Click += new System.EventHandler(this.buttonAtras_Click);
-            // 
-            // buttonAdelante
-            // 
-            this.buttonAdelante.Image = global::Sistema_de_Asistencias.Properties.Resources.derecha;
-            this.buttonAdelante.Location = new System.Drawing.Point(165, 3);
-            this.buttonAdelante.Name = "buttonAdelante";
-            this.buttonAdelante.Size = new System.Drawing.Size(75, 29);
-            this.buttonAdelante.TabIndex = 2;
-            this.buttonAdelante.UseVisualStyleBackColor = true;
-            this.buttonAdelante.Click += new System.EventHandler(this.buttonAdelante_Click);
-            // 
-            // buttonUltima
-            // 
-            this.buttonUltima.Image = global::Sistema_de_Asistencias.Properties.Resources.ultima;
-            this.buttonUltima.Location = new System.Drawing.Point(246, 3);
-            this.buttonUltima.Name = "buttonUltima";
-            this.buttonUltima.Size = new System.Drawing.Size(75, 29);
-            this.buttonUltima.TabIndex = 3;
-            this.buttonUltima.UseVisualStyleBackColor = true;
-            // 
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Menu;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Arial Narrow", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial Narrow", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(70, 135);
             this.dataGridView1.Name = "dataGridView1";
@@ -327,6 +264,69 @@
             this.timer1.Enabled = true;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // buttonPrimeraPg
+            // 
+            this.buttonPrimeraPg.Image = global::Sistema_de_Asistencias.Properties.Resources.primera;
+            this.buttonPrimeraPg.Location = new System.Drawing.Point(3, 3);
+            this.buttonPrimeraPg.Name = "buttonPrimeraPg";
+            this.buttonPrimeraPg.Size = new System.Drawing.Size(75, 29);
+            this.buttonPrimeraPg.TabIndex = 0;
+            this.buttonPrimeraPg.UseVisualStyleBackColor = true;
+            // 
+            // buttonAtras
+            // 
+            this.buttonAtras.Image = global::Sistema_de_Asistencias.Properties.Resources.izquierda;
+            this.buttonAtras.Location = new System.Drawing.Point(84, 3);
+            this.buttonAtras.Name = "buttonAtras";
+            this.buttonAtras.Size = new System.Drawing.Size(75, 29);
+            this.buttonAtras.TabIndex = 1;
+            this.buttonAtras.UseVisualStyleBackColor = true;
+            this.buttonAtras.Click += new System.EventHandler(this.buttonAtras_Click);
+            // 
+            // buttonAdelante
+            // 
+            this.buttonAdelante.Image = global::Sistema_de_Asistencias.Properties.Resources.derecha;
+            this.buttonAdelante.Location = new System.Drawing.Point(165, 3);
+            this.buttonAdelante.Name = "buttonAdelante";
+            this.buttonAdelante.Size = new System.Drawing.Size(75, 29);
+            this.buttonAdelante.TabIndex = 2;
+            this.buttonAdelante.UseVisualStyleBackColor = true;
+            this.buttonAdelante.Click += new System.EventHandler(this.buttonAdelante_Click);
+            // 
+            // buttonUltima
+            // 
+            this.buttonUltima.Image = global::Sistema_de_Asistencias.Properties.Resources.ultima;
+            this.buttonUltima.Location = new System.Drawing.Point(246, 3);
+            this.buttonUltima.Name = "buttonUltima";
+            this.buttonUltima.Size = new System.Drawing.Size(75, 29);
+            this.buttonUltima.TabIndex = 3;
+            this.buttonUltima.UseVisualStyleBackColor = true;
+            // 
+            // buttonAgregar
+            // 
+            this.buttonAgregar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonAgregar.Image = global::Sistema_de_Asistencias.Properties.Resources.agregar_usuario;
+            this.buttonAgregar.Location = new System.Drawing.Point(976, 21);
+            this.buttonAgregar.Name = "buttonAgregar";
+            this.buttonAgregar.Size = new System.Drawing.Size(67, 57);
+            this.buttonAgregar.TabIndex = 2;
+            this.buttonAgregar.UseVisualStyleBackColor = true;
+            this.buttonAgregar.Click += new System.EventHandler(this.buttonAgregar_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Sistema_de_Asistencias.Properties.Resources.buscar;
+            this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
+            this.pictureBox1.Location = new System.Drawing.Point(397, 37);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(41, 41);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
             // CUPersonal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -341,13 +341,13 @@
             this.Size = new System.Drawing.Size(1113, 720);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panelPaginador.ResumeLayout(false);
             this.panelPaginador.PerformLayout();
             this.flowLayoutPanel3.ResumeLayout(false);
             this.flowLayoutPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }

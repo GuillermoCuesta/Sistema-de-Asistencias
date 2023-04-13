@@ -18,7 +18,7 @@ namespace Sistema_de_Asistencias.Presentacion
         int IDPersonal;
         private int itemsPagina = 5;
         string Estado;
-        int totalPaginas;
+        decimal totalPaginas;
         private int contador;
 
         public CUPersonal()
@@ -65,7 +65,7 @@ namespace Sistema_de_Asistencias.Presentacion
         }
         private void buttonEditar_Click(object sender, EventArgs e)
         {
-            EditarPersonal();
+                EditarPersonal();
         }
         private void EliminarPersonal()
         {
@@ -85,12 +85,11 @@ namespace Sistema_de_Asistencias.Presentacion
                     funcion.EliminarPersonal(parametros);
 
                     MostrarPersonal();
-                    MessageBox.Show(dataGridView1.SelectedCells[1].Value + " fue eliminado con exito.");
+                    MessageBox.Show(dataGridView1.SelectedCells[1].Value + " Fue eliminado con exito.");
                 }
                 else
                 {
                     // Código para cancelar la operación
-
                 }
 
             }
@@ -157,8 +156,7 @@ namespace Sistema_de_Asistencias.Presentacion
             }
             catch (Exception e)
             {
-
-                MessageBox.Show(e.ToString());
+                MessageBox.Show("Seleccione el personal primero","Error");
             }
 
 
@@ -198,7 +196,8 @@ namespace Sistema_de_Asistencias.Presentacion
             {
                 Contar();
                 labelNumerador.Text = PagActual.ToString();
-                totalPaginas  = ((int)(Convert.ToDecimal(contador) / itemsPagina));
+                decimal numero = (decimal)contador / itemsPagina;
+                totalPaginas = Math.Round(numero, 0, MidpointRounding.AwayFromZero);
                 labelDenominador.Text = totalPaginas.ToString();
             }
             catch (Exception)

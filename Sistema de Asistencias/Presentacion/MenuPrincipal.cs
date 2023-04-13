@@ -44,5 +44,13 @@ namespace Sistema_de_Asistencias.Presentacion
 
             }
         }
+
+        private void buttonUsuarios_Click(object sender, EventArgs e)
+        {
+            CUUsuario ContrilUser = new CUUsuario();
+            panelPrincipal.Controls.Clear();
+            ContrilUser.Dock = DockStyle.Fill;
+            panelPrincipal.Controls.Add(ContrilUser);
+        }
     }
 }
