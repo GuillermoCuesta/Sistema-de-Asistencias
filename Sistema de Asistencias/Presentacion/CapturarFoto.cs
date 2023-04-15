@@ -1,14 +1,8 @@
 ﻿using AForge.Video;
 using AForge.Video.DirectShow;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Drawing.Imaging;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Sistema_de_Asistencias.Presentacion
@@ -21,7 +15,7 @@ namespace Sistema_de_Asistencias.Presentacion
         private FilterInfoCollection misDispositivos;
         private VideoCaptureDevice miCamara;
 
-        
+
 
         public CapturarFoto()
         {
@@ -64,12 +58,12 @@ namespace Sistema_de_Asistencias.Presentacion
 
         private void buttonGrabar_Click(object sender, EventArgs e)
         {
-            CerrarCamara(); 
+            CerrarCamara();
             int i = comboBoxDispositivos.SelectedIndex;
             string nombreVideo = misDispositivos[i].MonikerString;
             miCamara = new VideoCaptureDevice(nombreVideo);
             miCamara.NewFrame += new NewFrameEventHandler(Actualizar);
-            miCamara.Start();   
+            miCamara.Start();
         }
 
         private void CerrarCamara()
@@ -78,7 +72,7 @@ namespace Sistema_de_Asistencias.Presentacion
             {
                 miCamara.SignalToStop();
                 miCamara = null;
-            }        
+            }
         }
 
         private void CapturarFoto_FormClosed(object sender, FormClosedEventArgs e)

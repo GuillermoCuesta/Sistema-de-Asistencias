@@ -1,13 +1,7 @@
 ﻿using Sistema_de_Asistencias.Datos;
 using Sistema_de_Asistencias.Logica;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Sistema_de_Asistencias.Presentacion
@@ -50,7 +44,7 @@ namespace Sistema_de_Asistencias.Presentacion
             {
                 return false;
             }
-            
+
         }
 
         private void BuscarPersonalIdent()
@@ -66,7 +60,7 @@ namespace Sistema_de_Asistencias.Presentacion
                 idPersonal = (Int32)dt.Rows[0]["id_personal"];
                 nombre = labelNombre.Text = dt.Rows[0]["nombre"].ToString();
                 BuscarAsistencia();
-                
+
             }
         }
 
@@ -88,7 +82,7 @@ namespace Sistema_de_Asistencias.Presentacion
             asistencia.Horas = 0;
             asistencia.Observaciones = textBoxObservaciones.Text;
 
-            if(funcion.InsertarAsistemcia(asistencia) == true)
+            if (funcion.InsertarAsistemcia(asistencia) == true)
             {
                 MessageBox.Show($"La Entrada de {nombre}, ha sido registrada exitosamente a las {asistencia.Hora_entrada}", MessageBoxButtons.OK.ToString());
                 textBoxIdentAsis.Clear();

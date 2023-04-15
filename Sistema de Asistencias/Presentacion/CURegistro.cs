@@ -71,14 +71,14 @@ namespace Sistema_de_Asistencias.Presentacion
         {
             if (!string.IsNullOrEmpty(textBoxNomApell.Text) && !string.IsNullOrEmpty(textBoxIdent.Text) && !string.IsNullOrEmpty(comboBoxPais.Text) && !string.IsNullOrEmpty(comboBoxCargo.Text) && !string.IsNullOrEmpty(textBoxSueldo.Text) && !string.IsNullOrEmpty(comboBoxEstado.Text) && !string.IsNullOrEmpty(textBoxCodigo.Text))
             {
-                InsertarPersonal(); 
+                InsertarPersonal();
                 limpiar();
             }
             else
             {
                 MessageBox.Show("Todos los campos son obligatorios");
             }
-            
+
         }
 
         public void CargarCargos()
@@ -121,7 +121,7 @@ namespace Sistema_de_Asistencias.Presentacion
 
         private void comboBoxCargo_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            string indice =Convert.ToString( comboBoxCargo.SelectedValue);
+            string indice = Convert.ToString(comboBoxCargo.SelectedValue);
 
             textBoxSueldo.Text = indice;
         }
@@ -168,8 +168,8 @@ namespace Sistema_de_Asistencias.Presentacion
             this.parametros.IdPais = comboBoxPais.SelectedIndex;
             this.parametros.IdCargo = comboBoxCargo.SelectedIndex;
             this.parametros.SueldoHora = Convert.ToDecimal(textBoxSueldo.Text);
-            this.parametros.Estado = comboBoxEstado.Text ;
-            this.parametros.Codigo = textBoxCodigo.Text ;
+            this.parametros.Estado = comboBoxEstado.Text;
+            this.parametros.Codigo = textBoxCodigo.Text;
             // pictureBox1 es el nombre del PictureBox que contiene la imagen que quieres almacenar
             ImageConverter converter = new ImageConverter();
 

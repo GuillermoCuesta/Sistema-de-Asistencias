@@ -13,9 +13,8 @@ namespace Sistema_de_Asistencias.Datos
         {
             try
             {
-                
-                SqlCommand cmd = new SqlCommand("insertarPersonal", Conexion.conectar);
                 Conexion.abrir();
+                SqlCommand cmd = new SqlCommand("insertarPersonal", Conexion.conectar);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@nombre", parametros.Nombre);
                 cmd.Parameters.AddWithValue("@identificacion", parametros.Identificacion);
@@ -47,9 +46,8 @@ namespace Sistema_de_Asistencias.Datos
         {
             try
             {
-                
-                SqlCommand cmd = new SqlCommand("editarPersonal", Conexion.conectar);
                 Conexion.abrir();
+                SqlCommand cmd = new SqlCommand("editarPersonal", Conexion.conectar);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@id_personal", parametros.IdPersonal);
                 cmd.Parameters.AddWithValue("@nombre", parametros.Nombre);
@@ -81,9 +79,8 @@ namespace Sistema_de_Asistencias.Datos
         {
             try
             {
-                
-                SqlCommand cmd = new SqlCommand("eliminarPersonal", Conexion.conectar);
                 Conexion.abrir();
+                SqlCommand cmd = new SqlCommand("eliminarPersonal", Conexion.conectar);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@id_personal", parametros.IdPersonal);
                 cmd.ExecuteNonQuery();
@@ -107,6 +104,7 @@ namespace Sistema_de_Asistencias.Datos
         {
             try
             {
+                Conexion.abrir();
                 SqlDataAdapter ad = new SqlDataAdapter("buscarPersonal", Conexion.conectar);
                 ad.SelectCommand.CommandType = CommandType.StoredProcedure;
                 //ad.SelectCommand.Parameters.AddWithValue("@Desde", desde);
@@ -121,6 +119,10 @@ namespace Sistema_de_Asistencias.Datos
 
                 MessageBox.Show(e.StackTrace);
             }
+            finally
+            {
+                Conexion.cerrar();
+            }
 
         }
 
@@ -128,6 +130,7 @@ namespace Sistema_de_Asistencias.Datos
         {
             try
             {
+                Conexion.abrir();
                 SqlDataAdapter ad = new SqlDataAdapter("BuscarPersonalIdent", Conexion.conectar);
                 ad.SelectCommand.CommandType = CommandType.StoredProcedure;
                 ad.SelectCommand.Parameters.AddWithValue("@Buscador", buscador);
@@ -140,6 +143,10 @@ namespace Sistema_de_Asistencias.Datos
 
                 MessageBox.Show(e.StackTrace);
             }
+            finally
+            {
+                Conexion.cerrar();
+            }
 
         }
 
@@ -147,6 +154,7 @@ namespace Sistema_de_Asistencias.Datos
         {
             try
             {
+                Conexion.abrir();
                 SqlDataAdapter ad = new SqlDataAdapter("mostrarPersonal", Conexion.conectar);
                 ad.SelectCommand.CommandType = CommandType.StoredProcedure;
                 ad.SelectCommand.Parameters.AddWithValue("@Desde", desde);
@@ -158,18 +166,18 @@ namespace Sistema_de_Asistencias.Datos
 
                 MessageBox.Show(e.StackTrace);
             }
+            finally { Conexion.cerrar(); }
         }
 
         public void ContarPersonal(ref int contador)
         {
             try
             {
-                SqlCommand cmd = new SqlCommand("Select Count(id_personal) from Personal", Conexion.conectar);
                 Conexion.abrir();
-
+                SqlCommand cmd = new SqlCommand("Select Count(id_personal) from Personal", Conexion.conectar);
                 contador = (int)cmd.ExecuteScalar();
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 contador = 0;
             }

@@ -1,17 +1,10 @@
 ﻿using Sistema_de_Asistencias.Datos;
 using Sistema_de_Asistencias.Logica;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Diagnostics;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Resources.ResXFileRef;
 
 namespace Sistema_de_Asistencias.Presentacion
 {
@@ -40,7 +33,7 @@ namespace Sistema_de_Asistencias.Presentacion
         {
             DModulo funcion = new DModulo();
             DataTable dt = new DataTable();
-            
+
             funcion.MostrarModulo(ref dt);
             checkedListBoxPermisos.DataSource = dt;
             checkedListBoxPermisos.DisplayMember = "modulo";
@@ -56,11 +49,12 @@ namespace Sistema_de_Asistencias.Presentacion
         {
             if (string.IsNullOrEmpty(textBoxNomApell.Text) || string.IsNullOrEmpty(textBoxUsuario.Text) || string.IsNullOrEmpty(textBoxContraseña.Text) || string.IsNullOrEmpty(pictureBoxIcono.ToString()))
             {
-                MessageBox.Show("Todos los campos son obligatorios", "Error",MessageBoxButtons.OK);
+                MessageBox.Show("Todos los campos son obligatorios", "Error", MessageBoxButtons.OK);
             }
             else
             {
                 InsertarUsuario();
+                MostrarUsuarios();
                 Limpiar();
             }
         }
@@ -105,14 +99,15 @@ namespace Sistema_de_Asistencias.Presentacion
             {
                 checkedListBoxPermisos.SetItemChecked(i, false);
             }
-            
+
         }
 
         private void buttonGuardarCamUsuario_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(textBoxNomApell.Text) && !string.IsNullOrEmpty(textBoxUsuario.Text)  && !string.IsNullOrEmpty(textBoxContraseña.Text) && pictureBoxIcono.Image != null)
+            if (!string.IsNullOrEmpty(textBoxNomApell.Text) && !string.IsNullOrEmpty(textBoxUsuario.Text) && !string.IsNullOrEmpty(textBoxContraseña.Text) && pictureBoxIcono.Image != null)
             {
                 EditarUsuario();
+                MostrarUsuarios();
                 Limpiar();
             }
             else
@@ -130,7 +125,7 @@ namespace Sistema_de_Asistencias.Presentacion
             {
                 parametro.id_usuario = (int)dataGridViewUsuarios.SelectedCells[0].Value;
                 funcion.CambiarEstado(parametro);
-                MessageBox.Show(dataGridViewUsuarios.SelectedCells[1].Value + " fue eliminado con exito.");
+                MessageBox.Show("El estado de : " + dataGridViewUsuarios.SelectedCells[1].Value + " fue cambiado con exito.", "Cambio De Estado" , MessageBoxButtons.OK);
             }
             catch (Exception e)
             {
@@ -153,6 +148,9 @@ namespace Sistema_de_Asistencias.Presentacion
         private void buttonEditarUsuario_Click(object sender, EventArgs e)
         {
             EditarUsuarioButton();
+            MostrarUsuarios();
+            limpiar();
+
             if (panelRegistro.Visible == false)
             {
                 panelRegistro.Visible = true;
@@ -182,7 +180,9 @@ namespace Sistema_de_Asistencias.Presentacion
         {
             DUsuario funcion = new DUsuario();
             DataTable dt = new DataTable();
+
             funcion.MostarUsuarios(ref dt);
+
             dataGridViewUsuarios.DataSource = dt;
             dataGridViewUsuarios.Columns[4].Visible = false;
             dataGridViewUsuarios.CurrentCell = null;
@@ -194,7 +194,7 @@ namespace Sistema_de_Asistencias.Presentacion
 
             if (dataGridViewUsuarios.SelectedRows.Count > 0)
             {
-                idUsuario = (int)dataGridViewUsuarios.SelectedCells[0].Value;    
+                idUsuario = (int)dataGridViewUsuarios.SelectedCells[0].Value;
                 textBoxNomApell.Text = (string)dataGridViewUsuarios.SelectedCells[1].Value;
                 textBoxUsuario.Text = (string)dataGridViewUsuarios.SelectedCells[2].Value;
                 textBoxContraseña.Text = (string)dataGridViewUsuarios.SelectedCells[3].Value;
@@ -210,7 +210,7 @@ namespace Sistema_de_Asistencias.Presentacion
             else
             {
                 MessageBox.Show("Seleccione un usuario primero", "Error", MessageBoxButtons.OK);
-            }        
+            }
 
         }
 

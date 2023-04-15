@@ -35,7 +35,6 @@ namespace Sistema_de_Asistencias.Presentacion
         {
             ReiniciarPaginado();
             MostrarPersonal();
-            Contar();
             Paginar();
         }
 
@@ -55,7 +54,7 @@ namespace Sistema_de_Asistencias.Presentacion
         {
             DPersonal funcion = new DPersonal();
             DataTable dt = new DataTable();
-            funcion.BuscarPersonal(ref dt,Convert.ToInt32( labelNumerador.Text),Convert.ToInt32( labelDenominador.Text), textBoxBuscarPers.Text);
+            funcion.BuscarPersonal(ref dt, Convert.ToInt32(labelNumerador.Text), Convert.ToInt32(labelDenominador.Text), textBoxBuscarPers.Text);
             dataGridView1.DataSource = dt;
         }
 
@@ -65,7 +64,7 @@ namespace Sistema_de_Asistencias.Presentacion
         }
         private void buttonEditar_Click(object sender, EventArgs e)
         {
-                EditarPersonal();
+            EditarPersonal();
         }
         private void EliminarPersonal()
         {
@@ -97,7 +96,7 @@ namespace Sistema_de_Asistencias.Presentacion
             {
 
                 MessageBox.Show(e.ToString());
-            }           
+            }
         }
 
         private void MostrarPersonal()
@@ -152,11 +151,11 @@ namespace Sistema_de_Asistencias.Presentacion
                 //}
 
                 EditRegistro.EditarRegistro(parametros);
-                
+
             }
             catch (Exception e)
             {
-                MessageBox.Show("Seleccione el personal primero","Error");
+                MessageBox.Show("Seleccione el personal primero", "Error");
             }
 
 
@@ -200,10 +199,10 @@ namespace Sistema_de_Asistencias.Presentacion
                 totalPaginas = Math.Round(numero, 0, MidpointRounding.AwayFromZero);
                 labelDenominador.Text = totalPaginas.ToString();
             }
-            catch (Exception)
+            catch (Exception e)
             {
 
-                throw;
+                MessageBox.Show(e.Message);
             }
         }
 
@@ -214,7 +213,6 @@ namespace Sistema_de_Asistencias.Presentacion
 
             PagActual = 1;
 
-            Contar();
             Paginar();
         }
     }

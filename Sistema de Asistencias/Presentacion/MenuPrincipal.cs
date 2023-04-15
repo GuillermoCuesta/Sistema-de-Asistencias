@@ -34,7 +34,7 @@ namespace Sistema_de_Asistencias.Presentacion
             if (panelIzquierdo.Visible == true)
             {
                 panelIzquierdo.Visible = false;
-                
+
                 buttonCambiarPanel.Image = Sistema_de_Asistencias.Properties.Resources.ultima;
             }
             else

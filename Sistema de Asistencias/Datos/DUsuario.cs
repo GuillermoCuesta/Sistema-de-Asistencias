@@ -1,11 +1,7 @@
 ﻿using Microsoft.Data.SqlClient;
 using Sistema_de_Asistencias.Logica;
 using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Sistema_de_Asistencias.Datos
@@ -17,8 +13,8 @@ namespace Sistema_de_Asistencias.Datos
         {
             try
             {
-                SqlCommand cmd = new SqlCommand("insertarUsuario", Conexion.conectar);
                 Conexion.abrir();
+                SqlCommand cmd = new SqlCommand("insertarUsuario", Conexion.conectar);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@Nombre", parametros.nombreApellido);
                 cmd.Parameters.AddWithValue("@Usuario", parametros.usuario);
@@ -44,8 +40,8 @@ namespace Sistema_de_Asistencias.Datos
         {
             try
             {
-                SqlCommand cmd = new SqlCommand("editarUsuario", Conexion.conectar);
                 Conexion.abrir();
+                SqlCommand cmd = new SqlCommand("editarUsuario", Conexion.conectar);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@Id_usuario", parametros.id_usuario);
                 cmd.Parameters.AddWithValue("@Nombre", parametros.nombreApellido);
@@ -71,8 +67,8 @@ namespace Sistema_de_Asistencias.Datos
         {
             try
             {
-                SqlCommand cmd = new SqlCommand("cambiarEstadoUsuario", Conexion.conectar);
                 Conexion.abrir();
+                SqlCommand cmd = new SqlCommand("cambiarEstadoUsuario", Conexion.conectar);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@id_usuario", parametros.id_usuario);
                 cmd.ExecuteNonQuery();
@@ -115,14 +111,14 @@ namespace Sistema_de_Asistencias.Datos
         {
             try
             {
-                SqlDataAdapter ad = new SqlDataAdapter("mostrarUsuario", Conexion.conectar);
                 Conexion.abrir();
+                SqlDataAdapter ad = new SqlDataAdapter("mostrarUsuario", Conexion.conectar);
                 ad.SelectCommand.CommandType = CommandType.StoredProcedure;
                 ad.Fill(dt);
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.StackTrace);
+                Console.WriteLine(e.StackTrace);
             }
             finally
             {
