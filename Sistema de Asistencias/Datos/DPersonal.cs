@@ -23,7 +23,7 @@ namespace Sistema_de_Asistencias.Datos
                 cmd.Parameters.AddWithValue("@sueldoHora", parametros.SueldoHora);
                 cmd.Parameters.AddWithValue("@estado", parametros.Estado);
                 cmd.Parameters.AddWithValue("@codigo", parametros.Codigo);
-                cmd.Parameters.AddWithValue("@foto", parametros.foto);
+                cmd.Parameters.AddWithValue("@foto", parametros.Foto);
 
                 cmd.ExecuteNonQuery();
                 return true;
@@ -57,7 +57,7 @@ namespace Sistema_de_Asistencias.Datos
                 cmd.Parameters.AddWithValue("@sueldoHora", parametros.SueldoHora);
                 cmd.Parameters.AddWithValue("@estado", parametros.Estado);
                 cmd.Parameters.AddWithValue("@codigo", parametros.Codigo);
-                cmd.Parameters.AddWithValue("@foto", parametros.foto);
+                cmd.Parameters.AddWithValue("@foto", parametros.Foto);
                 cmd.ExecuteNonQuery();
                 return true;
 

@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TomarAsistencia));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.labelDatosEntrada = new System.Windows.Forms.Label();
             this.labelNombre = new System.Windows.Forms.Label();
             this.labelObser = new System.Windows.Forms.Label();
             this.textBoxObservaciones = new System.Windows.Forms.TextBox();
@@ -46,7 +47,6 @@
             this.textBoxIdentAsis = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.timerHora = new System.Windows.Forms.Timer(this.components);
-            this.labelDatosEntrada = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -72,6 +72,18 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(563, 834);
             this.panel1.TabIndex = 0;
+            // 
+            // labelDatosEntrada
+            // 
+            this.labelDatosEntrada.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelDatosEntrada.BackColor = System.Drawing.Color.Silver;
+            this.labelDatosEntrada.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDatosEntrada.ForeColor = System.Drawing.Color.Black;
+            this.labelDatosEntrada.Location = new System.Drawing.Point(94, 361);
+            this.labelDatosEntrada.Name = "labelDatosEntrada";
+            this.labelDatosEntrada.Size = new System.Drawing.Size(365, 62);
+            this.labelDatosEntrada.TabIndex = 14;
+            this.labelDatosEntrada.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // labelNombre
             // 
@@ -144,22 +156,22 @@
             this.tableLayoutPanel1.Controls.Add(this.labelHora, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.labelFecha, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.labelH, 0, 1);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(108, 442);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(94, 442);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(339, 100);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(365, 100);
             this.tableLayoutPanel1.TabIndex = 12;
             // 
             // labelF
             // 
             this.labelF.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelF.AutoSize = true;
-            this.labelF.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.labelF.BackColor = System.Drawing.Color.Transparent;
             this.labelF.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelF.ForeColor = System.Drawing.Color.Black;
-            this.labelF.Location = new System.Drawing.Point(32, 9);
+            this.labelF.Location = new System.Drawing.Point(38, 9);
             this.labelF.Name = "labelF";
             this.labelF.Size = new System.Drawing.Size(105, 31);
             this.labelF.TabIndex = 5;
@@ -173,7 +185,7 @@
             this.labelHora.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.labelHora.Font = new System.Drawing.Font("Arial", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelHora.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.labelHora.Location = new System.Drawing.Point(216, 57);
+            this.labelHora.Location = new System.Drawing.Point(236, 57);
             this.labelHora.Name = "labelHora";
             this.labelHora.Size = new System.Drawing.Size(75, 35);
             this.labelHora.TabIndex = 7;
@@ -187,7 +199,7 @@
             this.labelFecha.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.labelFecha.Font = new System.Drawing.Font("Arial", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelFecha.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.labelFecha.Location = new System.Drawing.Point(210, 7);
+            this.labelFecha.Location = new System.Drawing.Point(229, 7);
             this.labelFecha.Name = "labelFecha";
             this.labelFecha.Size = new System.Drawing.Size(88, 35);
             this.labelFecha.TabIndex = 6;
@@ -198,10 +210,10 @@
             // 
             this.labelH.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelH.AutoSize = true;
-            this.labelH.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.labelH.BackColor = System.Drawing.Color.Transparent;
             this.labelH.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelH.ForeColor = System.Drawing.Color.Black;
-            this.labelH.Location = new System.Drawing.Point(40, 59);
+            this.labelH.Location = new System.Drawing.Point(47, 59);
             this.labelH.Name = "labelH";
             this.labelH.Size = new System.Drawing.Size(88, 31);
             this.labelH.TabIndex = 4;
@@ -278,18 +290,6 @@
             this.timerHora.Enabled = true;
             this.timerHora.Tick += new System.EventHandler(this.timerHora_Tick);
             // 
-            // labelDatosEntrada
-            // 
-            this.labelDatosEntrada.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.labelDatosEntrada.BackColor = System.Drawing.Color.Silver;
-            this.labelDatosEntrada.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDatosEntrada.ForeColor = System.Drawing.Color.Black;
-            this.labelDatosEntrada.Location = new System.Drawing.Point(94, 361);
-            this.labelDatosEntrada.Name = "labelDatosEntrada";
-            this.labelDatosEntrada.Size = new System.Drawing.Size(365, 62);
-            this.labelDatosEntrada.TabIndex = 14;
-            this.labelDatosEntrada.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // TomarAsistencia
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -300,6 +300,7 @@
             this.Controls.Add(this.panel2);
             this.Name = "TomarAsistencia";
             this.Text = "Tomar Asistencia";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);

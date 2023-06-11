@@ -60,7 +60,7 @@ namespace Sistema_de_Asistencias.Presentacion
             using (MemoryStream ms = new MemoryStream())
             {
                 pictureBoxUsuario.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
-                parametros.foto = ms.ToArray();
+                parametros.Foto = ms.ToArray();
             }
 
             funcion.InsertarPersonal(parametros);
@@ -129,7 +129,7 @@ namespace Sistema_de_Asistencias.Presentacion
         public void EditarRegistro(Personal parametros)
         {
             this.parametros = parametros;
-            using (MemoryStream ms = new MemoryStream(parametros.foto))
+            using (MemoryStream ms = new MemoryStream(parametros.Foto))
             {
                 // Crea una imagen a partir del MemoryStream
                 Image imagen = Image.FromStream(ms);
@@ -173,7 +173,7 @@ namespace Sistema_de_Asistencias.Presentacion
             // pictureBox1 es el nombre del PictureBox que contiene la imagen que quieres almacenar
             ImageConverter converter = new ImageConverter();
 
-            this.parametros.foto = (byte[])converter.ConvertTo(pictureBoxUsuario.Image, typeof(byte[]));
+            this.parametros.Foto = (byte[])converter.ConvertTo(pictureBoxUsuario.Image, typeof(byte[]));
 
             funcion.EditarPersonal(this.parametros);
         }

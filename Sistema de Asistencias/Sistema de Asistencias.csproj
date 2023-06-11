@@ -335,6 +335,7 @@
     <Compile Include="Logica\Pais.cs" />
     <Compile Include="Logica\Permiso.cs" />
     <Compile Include="Logica\Personal.cs" />
+    <Compile Include="Logica\SistemadeGestiondeAsistenciasContext.cs" />
     <Compile Include="Logica\Usuario.cs" />
     <Compile Include="Presentacion\CapturarFoto.cs">
       <SubType>Form</SubType>

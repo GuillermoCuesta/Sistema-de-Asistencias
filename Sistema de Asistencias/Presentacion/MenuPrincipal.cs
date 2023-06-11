@@ -52,5 +52,11 @@ namespace Sistema_de_Asistencias.Presentacion
             ContrilUser.Dock = DockStyle.Fill;
             panelPrincipal.Controls.Add(ContrilUser);
         }
+
+        private void buttonRegistro_Click(object sender, EventArgs e)
+        {
+            TomarAsistencia asis = new TomarAsistencia();
+            asis.Show();
+        }
     }
 }

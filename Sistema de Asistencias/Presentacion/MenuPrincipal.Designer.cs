@@ -178,6 +178,7 @@
             this.buttonRegistro.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.buttonRegistro.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.buttonRegistro.UseVisualStyleBackColor = false;
+            this.buttonRegistro.Click += new System.EventHandler(this.buttonRegistro_Click);
             // 
             // panel23
             // 

@@ -15,8 +15,8 @@ namespace Sistema_de_Asistencias.Datos
                 Conexion.abrir();
                 SqlCommand cmd = new SqlCommand("insertarPermiso", Conexion.conectar);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@id_modulo", parametros.id_modulo);
-                cmd.Parameters.AddWithValue("@id_usuario", parametros.id_usuario);
+                cmd.Parameters.AddWithValue("@id_modulo", parametros.IdModulo);
+                cmd.Parameters.AddWithValue("@id_usuario", parametros.IdUsuario);
                 cmd.ExecuteNonQuery();
                 return true;
             }
@@ -35,7 +35,7 @@ namespace Sistema_de_Asistencias.Datos
                 Conexion.abrir();
                 SqlDataAdapter ad = new SqlDataAdapter("mostrarPermiso", Conexion.conectar);
                 ad.SelectCommand.CommandType = CommandType.StoredProcedure;
-                ad.SelectCommand.Parameters.AddWithValue("@id_usuario", parametros.id_usuario);
+                ad.SelectCommand.Parameters.AddWithValue("@id_usuario", parametros.IdUsuario);
                 ad.Fill(dt);
             }
             catch (Exception e)
@@ -56,7 +56,8 @@ namespace Sistema_de_Asistencias.Datos
                 Conexion.abrir();
                 SqlCommand cmd = new SqlCommand("eliminarPermiso", Conexion.conectar);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@id_usuario", parametros.id_usuario);
+                cmd.Parameters.AddWithValue("@id_usuario", parametros.IdUsuario);
+                cmd.Parameters.AddWithValue("@id_modulo", parametros.IdModulo);    
                 cmd.ExecuteNonQuery();
                 return true;
             }

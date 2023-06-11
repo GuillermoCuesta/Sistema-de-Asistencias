@@ -16,10 +16,10 @@ namespace Sistema_de_Asistencias.Datos
                 Conexion.abrir();
                 SqlCommand cmd = new SqlCommand("insertarUsuario", Conexion.conectar);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@Nombre", parametros.nombreApellido);
-                cmd.Parameters.AddWithValue("@Usuario", parametros.usuario);
-                cmd.Parameters.AddWithValue("@Contraseña", parametros.contraseña);
-                cmd.Parameters.AddWithValue("@Imagen", parametros.icono);
+                cmd.Parameters.AddWithValue("@Nombre", parametros.NombreApellido);
+                cmd.Parameters.AddWithValue("@Usuario", parametros.Usuario1);
+                cmd.Parameters.AddWithValue("@Contraseña", parametros.Contraseña);
+                cmd.Parameters.AddWithValue("@Imagen", parametros.Icono);
                 cmd.Parameters.AddWithValue("@Estado", "Activo");
                 cmd.ExecuteNonQuery();
                 return true;
@@ -43,11 +43,11 @@ namespace Sistema_de_Asistencias.Datos
                 Conexion.abrir();
                 SqlCommand cmd = new SqlCommand("editarUsuario", Conexion.conectar);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@Id_usuario", parametros.id_usuario);
-                cmd.Parameters.AddWithValue("@Nombre", parametros.nombreApellido);
-                cmd.Parameters.AddWithValue("@Usuario", parametros.usuario);
-                cmd.Parameters.AddWithValue("@Contraseña", parametros.contraseña);
-                cmd.Parameters.AddWithValue("@Imagen", parametros.icono);
+                cmd.Parameters.AddWithValue("@Id_usuario", parametros.IdUsuario);
+                cmd.Parameters.AddWithValue("@Nombre", parametros.NombreApellido);
+                cmd.Parameters.AddWithValue("@Usuario", parametros.Usuario1);
+                cmd.Parameters.AddWithValue("@Contraseña", parametros.Contraseña);
+                cmd.Parameters.AddWithValue("@Imagen", parametros.Icono);
                 cmd.ExecuteNonQuery();
                 return true;
             }
@@ -70,7 +70,7 @@ namespace Sistema_de_Asistencias.Datos
                 Conexion.abrir();
                 SqlCommand cmd = new SqlCommand("cambiarEstadoUsuario", Conexion.conectar);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@id_usuario", parametros.id_usuario);
+                cmd.Parameters.AddWithValue("@id_usuario", parametros.IdUsuario);
                 cmd.ExecuteNonQuery();
                 return true;
             }

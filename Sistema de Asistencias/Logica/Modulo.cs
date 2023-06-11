@@ -1,8 +1,22 @@
-﻿namespace Sistema_de_Asistencias.Logica
+﻿using System;
+using System.Collections.Generic;
+
+// Code scaffolded by EF Core assumes nullable reference types (NRTs) are not used or disabled.
+// If you have enabled NRTs for your project, then un-comment the following line:
+// #nullable disable
+
+namespace Sistema_de_Asistencias.Logica
 {
-    public class Modulo
+    public partial class Modulo
     {
-        public int id_modulo { get; set; }
-        public string modulo { get; set; }
+        public Modulo()
+        {
+            Permiso = new HashSet<Permiso>();
+        }
+
+        public int IdModulo { get; set; }
+        public string Modulo1 { get; set; }
+
+        public virtual ICollection<Permiso> Permiso { get; set; }
     }
 }

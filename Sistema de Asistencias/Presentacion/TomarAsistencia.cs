@@ -73,18 +73,18 @@ namespace Sistema_de_Asistencias.Presentacion
             Asistencia asistencia = new Asistencia();
             DAsistencia funcion = new DAsistencia();
 
-            asistencia.id_personal = idPersonal;
-            asistencia.Fecha_entrada = DateTime.Now;
-            asistencia.Fecha_salida = DateTime.Now;
-            asistencia.Hora_entrada = DateTime.Now.TimeOfDay;
-            asistencia.Hora_salida = DateTime.Now.TimeOfDay;
+            asistencia.IdPersonal = idPersonal;
+            asistencia.FechaEntrada = DateTime.Now;
+            asistencia.FechaSalida = DateTime.Now;
+            asistencia.HoraEntrada = DateTime.Now.TimeOfDay;
+            asistencia.HoraSalida = DateTime.Now.TimeOfDay;
             asistencia.Estado = "Entrada";
             asistencia.Horas = 0;
             asistencia.Observaciones = textBoxObservaciones.Text;
 
             if (funcion.InsertarAsistemcia(asistencia) == true)
             {
-                MessageBox.Show($"La Entrada de {nombre}, ha sido registrada exitosamente a las {asistencia.Hora_entrada}", MessageBoxButtons.OK.ToString());
+                MessageBox.Show($"La Entrada de {nombre}, ha sido registrada exitosamente a las {asistencia.HoraEntrada}", MessageBoxButtons.OK.ToString());
                 textBoxIdentAsis.Clear();
                 labelNombre.Text = "";
                 textBoxObservaciones.Clear();
@@ -96,14 +96,14 @@ namespace Sistema_de_Asistencias.Presentacion
             Asistencia asistencia = new Asistencia();
             DAsistencia funcion = new DAsistencia();
 
-            asistencia.id_personal = idPersonal;
-            asistencia.Fecha_salida = DateTime.Now;
-            asistencia.Hora_salida = DateTime.Now.TimeOfDay;
+            asistencia.IdPersonal = idPersonal;
+            asistencia.FechaSalida = DateTime.Now;
+            asistencia.HoraSalida = DateTime.Now.TimeOfDay;
             asistencia.Horas = CalcularHorasTranscurridas();
 
             if (funcion.InsertarSalida(asistencia) == true)
             {
-                MessageBox.Show($"La Salida de {nombre}, ha sido registrada exitosamente a las {asistencia.Hora_salida}", MessageBoxButtons.OK.ToString());
+                MessageBox.Show($"La Salida de {nombre}, ha sido registrada exitosamente a las {asistencia.HoraSalida}", MessageBoxButtons.OK.ToString());
                 textBoxIdentAsis.Clear();
                 textBoxObservaciones.Clear();
                 labelDatosEntrada.Text = "";

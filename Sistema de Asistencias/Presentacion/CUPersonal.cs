@@ -126,16 +126,16 @@ namespace Sistema_de_Asistencias.Presentacion
                 parametros.Nombre = (string)dataGridView1.SelectedCells[1].Value;
                 parametros.Identificacion = (string)dataGridView1.SelectedCells[2].Value;
                 parametros.SueldoHora = (decimal?)dataGridView1.SelectedCells[3].Value;
-                parametros.IdCargo = (int?)dataGridView1.SelectedCells[5].Value;
+                parametros.IdCargo = (int)dataGridView1.SelectedCells[5].Value;
                 parametros.Estado = (string)dataGridView1.SelectedCells[6].Value;
                 parametros.Codigo = (string)dataGridView1.SelectedCells[7].Value;
-                parametros.IdPais = (int?)dataGridView1.SelectedCells[8].Value;
+                parametros.IdPais = (int)dataGridView1.SelectedCells[8].Value;
 
                 //if (dataGridView1.SelectedCells[9].Value.ToString() != "")
                 //{
                 try
                 {
-                    parametros.foto = (byte[])(dataGridView1.SelectedCells[9].Value);
+                    parametros.Foto = (byte[])(dataGridView1.SelectedCells[9].Value);
                 }
                 catch (Exception e)
                 {
@@ -143,18 +143,15 @@ namespace Sistema_de_Asistencias.Presentacion
                     using (var ms = new MemoryStream())
                     {
                         imgDefault.Save(ms, System.Drawing.Imaging.ImageFormat.Png); // Guardar imagen en memoria
-                        parametros.foto = ms.ToArray(); // Asignar la imagen como un array de bytes al parámetro
+                        parametros.Foto = ms.ToArray(); // Asignar la imagen como un array de bytes al parámetro
                     }
                 }
-
-
                 //}
-
                 EditRegistro.EditarRegistro(parametros);
-
             }
             catch (Exception e)
             {
+                MessageBox.Show(e.Message);
                 MessageBox.Show("Seleccione el personal primero", "Error");
             }
 

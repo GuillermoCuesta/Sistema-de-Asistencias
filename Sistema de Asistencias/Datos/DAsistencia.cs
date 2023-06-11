@@ -36,11 +36,11 @@ namespace Sistema_de_Asistencias.Datos
                 SqlCommand cmd = new SqlCommand("insertarAsistencia", Conexion.conectar);
                 Conexion.abrir();
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@Idpersonal", parametros.id_personal);
-                cmd.Parameters.AddWithValue("@FechaEntrada", parametros.Fecha_entrada);
-                cmd.Parameters.AddWithValue("@FechaSalida", parametros.Fecha_salida);
-                cmd.Parameters.AddWithValue("@HoraEntrada", parametros.Hora_entrada);
-                cmd.Parameters.AddWithValue("@HoraSalida", parametros.Hora_salida);
+                cmd.Parameters.AddWithValue("@Idpersonal", parametros.IdPersonal);
+                cmd.Parameters.AddWithValue("@FechaEntrada", parametros.FechaEntrada);
+                cmd.Parameters.AddWithValue("@FechaSalida", parametros.FechaSalida);
+                cmd.Parameters.AddWithValue("@HoraEntrada", parametros.HoraEntrada);
+                cmd.Parameters.AddWithValue("@HoraSalida", parametros.HoraSalida);
                 cmd.Parameters.AddWithValue("@Estado", parametros.Estado);
                 cmd.Parameters.AddWithValue("@Horas", parametros.Horas);
                 cmd.Parameters.AddWithValue("@Observaciones", parametros.Observaciones);
@@ -67,9 +67,9 @@ namespace Sistema_de_Asistencias.Datos
                 SqlCommand cmd = new SqlCommand("insertarSalida", Conexion.conectar);
                 Conexion.abrir();
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@Idpersonal", parametros.id_personal);
-                cmd.Parameters.AddWithValue("@FechaSalida", parametros.Fecha_salida);
-                cmd.Parameters.AddWithValue("@HoraSalida", parametros.Hora_salida);
+                cmd.Parameters.AddWithValue("@Idpersonal", parametros.IdPersonal);
+                cmd.Parameters.AddWithValue("@FechaSalida", parametros.FechaSalida);
+                cmd.Parameters.AddWithValue("@HoraSalida", parametros.HoraSalida);
                 cmd.Parameters.AddWithValue("@Horas", parametros.Horas);
 
                 cmd.ExecuteNonQuery();

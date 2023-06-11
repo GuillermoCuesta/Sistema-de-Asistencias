@@ -13,6 +13,7 @@ namespace Sistema_de_Asistencias.Presentacion
         public CUUsuario()
         {
             InitializeComponent();
+            MostrarUsuarios();
         }
 
         private int idUsuario;
@@ -27,6 +28,10 @@ namespace Sistema_de_Asistencias.Presentacion
             textBoxNomApell.Clear();
             textBoxUsuario.Clear();
             textBoxContraseña.Clear();
+            for (int i = 0; i < checkedListBoxPermisos.Items.Count; i++)
+            {
+                checkedListBoxPermisos.SetItemChecked(i, false);
+            }
         }
 
         private void MostrarModulos()
@@ -37,7 +42,40 @@ namespace Sistema_de_Asistencias.Presentacion
             funcion.MostrarModulo(ref dt);
             checkedListBoxPermisos.DataSource = dt;
             checkedListBoxPermisos.DisplayMember = "modulo";
-            //checkedListBoxPermisos.ValueMember = "id_modulo";
+            checkedListBoxPermisos.ValueMember = "id_modulo";
+        }
+
+        private void ValidarPermisos()
+        {
+            DPermiso funcion = new DPermiso();
+            DataTable dt = new DataTable();
+            Permiso parametros = new Permiso();
+            parametros.IdUsuario = idUsuario;
+
+            funcion.MostrarPermisos(ref dt, parametros);
+
+            foreach (DataRow row in dt.Rows)
+            {
+                int valorDf = Convert.ToInt32(row[0]); // Suponiendo que la columna de la DataTable es la primera (índice 0)
+
+                // Comparar cada elemento del checkedListBoxPermisos con el valor de la DataTable
+                for (int i = 0; i < checkedListBoxPermisos.Items.Count; i++)
+                {
+                    if (checkedListBoxPermisos.Items[i] is DataRowView dataRowView)
+                    {
+                        int valorCheckedListBox = Convert.ToInt32(dataRowView[checkedListBoxPermisos.ValueMember]);
+
+                        // Comparar el valor del checkedListBoxPermisos con el valor de la DataTable
+                        if (valorCheckedListBox == valorDf)
+                        {
+                            // Marcar la fila correspondiente en el checkedListBoxPermisos
+                            checkedListBoxPermisos.SetItemChecked(i, true);
+                        }
+                    }
+                }
+            }
+
+
         }
 
         private void buttonActualizar_Click(object sender, EventArgs e)
@@ -64,11 +102,11 @@ namespace Sistema_de_Asistencias.Presentacion
             DUsuario funcion = new DUsuario();
             Usuario parametro = new Usuario();
 
-            parametro.nombreApellido = textBoxNomApell.Text;
-            parametro.usuario = textBoxUsuario.Text;
-            parametro.contraseña = textBoxContraseña.Text;
+            parametro.NombreApellido = textBoxNomApell.Text;
+            parametro.Usuario1 = textBoxUsuario.Text;
+            parametro.Contraseña = textBoxContraseña.Text;
             ImageConverter converter = new ImageConverter();
-            parametro.icono = (byte[])converter.ConvertTo(pictureBoxIcono.Image, typeof(byte[]));
+            parametro.Icono = (byte[])converter.ConvertTo(pictureBoxIcono.Image, typeof(byte[]));
 
             funcion.InsertarUsuario(parametro);
         }
@@ -78,12 +116,12 @@ namespace Sistema_de_Asistencias.Presentacion
             DUsuario funcion = new DUsuario();
             Usuario parametro = new Usuario();
 
-            parametro.id_usuario = idUsuario;
-            parametro.nombreApellido = textBoxNomApell.Text;
-            parametro.usuario = textBoxUsuario.Text;
-            parametro.contraseña = textBoxContraseña.Text;
+            parametro.IdUsuario = idUsuario;
+            parametro.NombreApellido = textBoxNomApell.Text;
+            parametro.Usuario1 = textBoxUsuario.Text;
+            parametro.Contraseña = textBoxContraseña.Text;
             ImageConverter converter = new ImageConverter();
-            parametro.icono = (byte[])converter.ConvertTo(pictureBoxIcono.Image, typeof(byte[]));
+            parametro.Icono = (byte[])converter.ConvertTo(pictureBoxIcono.Image, typeof(byte[]));
             funcion.EditarUsuario(parametro);
         }
 
@@ -123,9 +161,9 @@ namespace Sistema_de_Asistencias.Presentacion
 
             try
             {
-                parametro.id_usuario = (int)dataGridViewUsuarios.SelectedCells[0].Value;
+                parametro.IdUsuario = (int)dataGridViewUsuarios.SelectedCells[0].Value;
                 funcion.CambiarEstado(parametro);
-                MessageBox.Show("El estado de : " + dataGridViewUsuarios.SelectedCells[1].Value + " fue cambiado con exito.", "Cambio De Estado" , MessageBoxButtons.OK);
+                MessageBox.Show("El estado de : " + dataGridViewUsuarios.SelectedCells[1].Value + " fue cambiado con exito.", "Cambio De Estado", MessageBoxButtons.OK);
             }
             catch (Exception e)
             {
@@ -149,7 +187,8 @@ namespace Sistema_de_Asistencias.Presentacion
         {
             EditarUsuarioButton();
             MostrarUsuarios();
-            limpiar();
+            MostrarModulos();
+            ValidarPermisos();
 
             if (panelRegistro.Visible == false)
             {
