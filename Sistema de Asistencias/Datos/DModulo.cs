@@ -1,20 +1,25 @@
 ﻿using Microsoft.Data.SqlClient;
 using System;
 using System.Data;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Sistema_de_Asistencias.Datos
 {
     public class DModulo
     {
-        public void MostrarModulo(ref DataTable dt)
+        public async Task<DataTable> MostrarModuloAsync()
         {
+            DataTable dt = new DataTable();
             try
             {
-                SqlDataAdapter ad = new SqlDataAdapter("mostrarModulo", Conexion.conectar);
+                SqlCommand command = new SqlCommand("mostrarModulo", Conexion.conectar);
                 Conexion.abrir();
-                ad.SelectCommand.CommandType = CommandType.StoredProcedure;
-                ad.Fill(dt);
+                command.CommandType = CommandType.StoredProcedure;
+                using (SqlDataReader reader = await command.ExecuteReaderAsync())
+                {
+                    dt.Load(reader);
+                }
             }
             catch (Exception e)
             {
@@ -24,6 +29,7 @@ namespace Sistema_de_Asistencias.Datos
             {
                 Conexion.cerrar();
             }
+            return dt;
         }
     }
 }

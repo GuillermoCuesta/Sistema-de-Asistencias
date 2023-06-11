@@ -2,22 +2,23 @@
 using Sistema_de_Asistencias.Logica;
 using System;
 using System.Data;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Sistema_de_Asistencias.Datos
 {
     public class DPermiso
     {
-        public bool InsertarPermisos(Permiso parametros)
+        public async Task<bool> InsertarPermisosAsync(Permiso parametros)
         {
             try
             {
                 Conexion.abrir();
                 SqlCommand cmd = new SqlCommand("insertarPermiso", Conexion.conectar);
-                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@id_modulo", parametros.IdModulo);
                 cmd.Parameters.AddWithValue("@id_usuario", parametros.IdUsuario);
-                cmd.ExecuteNonQuery();
+                await cmd.ExecuteNonQueryAsync();
                 return true;
             }
             catch (Exception e)
@@ -25,18 +26,25 @@ namespace Sistema_de_Asistencias.Datos
                 MessageBox.Show(e.Message);
                 return false;
             }
-            finally { Conexion.cerrar(); }
+            finally
+            {
+                Conexion.cerrar();
+            }
         }
 
-        public void MostrarPermisos(ref DataTable dt, Permiso parametros)
+        public async Task<DataTable> MostrarPermisosAsync(Permiso parametros)
         {
+            DataTable dt = new DataTable();
             try
             {
                 Conexion.abrir();
-                SqlDataAdapter ad = new SqlDataAdapter("mostrarPermiso", Conexion.conectar);
-                ad.SelectCommand.CommandType = CommandType.StoredProcedure;
-                ad.SelectCommand.Parameters.AddWithValue("@id_usuario", parametros.IdUsuario);
-                ad.Fill(dt);
+                SqlCommand command = new SqlCommand("mostrarPermiso", Conexion.conectar);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@id_usuario", parametros.IdUsuario);
+                using (SqlDataReader reader = await command.ExecuteReaderAsync())
+                {
+                    dt.Load(reader);
+                }
             }
             catch (Exception e)
             {
@@ -46,19 +54,19 @@ namespace Sistema_de_Asistencias.Datos
             {
                 Conexion.cerrar();
             }
-
+            return dt;
         }
 
-        public bool EliminarPermiso(ref DataTable dt, Permiso parametros)
+        public async Task<bool> EliminarPermisoAsync(Permiso parametros)
         {
             try
             {
                 Conexion.abrir();
                 SqlCommand cmd = new SqlCommand("eliminarPermiso", Conexion.conectar);
-                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@id_usuario", parametros.IdUsuario);
-                cmd.Parameters.AddWithValue("@id_modulo", parametros.IdModulo);    
-                cmd.ExecuteNonQuery();
+                cmd.Parameters.AddWithValue("@id_modulo", parametros.IdModulo);
+                await cmd.ExecuteNonQueryAsync();
                 return true;
             }
             catch (Exception e)
@@ -71,5 +79,6 @@ namespace Sistema_de_Asistencias.Datos
                 Conexion.cerrar();
             }
         }
+
     }
 }

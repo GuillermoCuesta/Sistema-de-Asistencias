@@ -2,6 +2,7 @@
 using Sistema_de_Asistencias.Logica;
 using System;
 using System.Data;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Sistema_de_Asistencias.Datos
@@ -9,7 +10,7 @@ namespace Sistema_de_Asistencias.Datos
     public class DUsuario
     {
 
-        public bool InsertarUsuario(Usuario parametros)
+        public async Task<bool> InsertarUsuarioAsync(Usuario parametros)
         {
             try
             {
@@ -21,7 +22,7 @@ namespace Sistema_de_Asistencias.Datos
                 cmd.Parameters.AddWithValue("@Contraseña", parametros.Contraseña);
                 cmd.Parameters.AddWithValue("@Imagen", parametros.Icono);
                 cmd.Parameters.AddWithValue("@Estado", "Activo");
-                cmd.ExecuteNonQuery();
+                await cmd.ExecuteNonQueryAsync();
                 return true;
             }
             catch (Exception e)
@@ -33,10 +34,9 @@ namespace Sistema_de_Asistencias.Datos
             {
                 Conexion.cerrar();
             }
-
         }
 
-        public bool EditarUsuario(Usuario parametros)
+        public async Task<bool> EditarUsuarioAsync(Usuario parametros)
         {
             try
             {
@@ -48,7 +48,7 @@ namespace Sistema_de_Asistencias.Datos
                 cmd.Parameters.AddWithValue("@Usuario", parametros.Usuario1);
                 cmd.Parameters.AddWithValue("@Contraseña", parametros.Contraseña);
                 cmd.Parameters.AddWithValue("@Imagen", parametros.Icono);
-                cmd.ExecuteNonQuery();
+                await cmd.ExecuteNonQueryAsync();
                 return true;
             }
             catch (Exception e)
@@ -60,10 +60,9 @@ namespace Sistema_de_Asistencias.Datos
             {
                 Conexion.cerrar();
             }
-
         }
 
-        public bool CambiarEstado(Usuario parametros)
+        public async Task<bool> CambiarEstadoAsync(Usuario parametros)
         {
             try
             {
@@ -71,7 +70,7 @@ namespace Sistema_de_Asistencias.Datos
                 SqlCommand cmd = new SqlCommand("cambiarEstadoUsuario", Conexion.conectar);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@id_usuario", parametros.IdUsuario);
-                cmd.ExecuteNonQuery();
+                await cmd.ExecuteNonQueryAsync();
                 return true;
             }
             catch (Exception e)
@@ -83,18 +82,21 @@ namespace Sistema_de_Asistencias.Datos
             {
                 Conexion.cerrar();
             }
-
         }
 
-        public void BuscarUsuario(ref DataTable dt, string buscador)
+        public async Task<DataTable> BuscarUsuarioAsync(string buscador)
         {
+            DataTable dt = new DataTable();
             try
             {
                 Conexion.abrir();
-                SqlDataAdapter ad = new SqlDataAdapter("buscarUsuario", Conexion.conectar);
-                ad.SelectCommand.CommandType = CommandType.StoredProcedure;
-                ad.SelectCommand.Parameters.AddWithValue("@Buscador", buscador);
-                ad.Fill(dt);
+                SqlCommand command = new SqlCommand("buscarUsuario", Conexion.conectar);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@Buscador", buscador);
+                using (SqlDataReader reader = await command.ExecuteReaderAsync())
+                {
+                    dt.Load(reader);
+                }
             }
             catch (Exception e)
             {
@@ -104,17 +106,21 @@ namespace Sistema_de_Asistencias.Datos
             {
                 Conexion.cerrar();
             }
-
+            return dt;
         }
 
-        public void MostarUsuarios(ref DataTable dt)
+        public async Task<DataTable> MostarUsuariosAsync()
         {
+            DataTable dt = new DataTable();
             try
             {
                 Conexion.abrir();
-                SqlDataAdapter ad = new SqlDataAdapter("mostrarUsuario", Conexion.conectar);
-                ad.SelectCommand.CommandType = CommandType.StoredProcedure;
-                ad.Fill(dt);
+                SqlCommand command = new SqlCommand("mostrarUsuario", Conexion.conectar);
+                command.CommandType = CommandType.StoredProcedure;
+                using (SqlDataReader reader = await command.ExecuteReaderAsync())
+                {
+                    dt.Load(reader);
+                }
             }
             catch (Exception e)
             {
@@ -124,7 +130,31 @@ namespace Sistema_de_Asistencias.Datos
             {
                 Conexion.cerrar();
             }
+            return dt;
         }
+
+
+        public async Task<int> ObtenerUltimoUsuarioAsync()
+        {
+            int idUsuario = 0;
+            try
+            {
+                Conexion.abrir();
+                SqlCommand cmd = new SqlCommand("SELECT MAX(ID_USUARIO) FROM USUARIO;", Conexion.conectar);
+                cmd.CommandType = CommandType.Text;
+                idUsuario = (int)await cmd.ExecuteScalarAsync();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.StackTrace);
+            }
+            finally
+            {
+                Conexion.cerrar();
+            }
+            return idUsuario;
+        }
+
 
     }
 }
