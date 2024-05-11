@@ -73,7 +73,7 @@ namespace Sistema_de_Asistencias.Datos
                 ad.SelectCommand.CommandType = CommandType.StoredProcedure;
                 ad.SelectCommand.Parameters.AddWithValue("@buscador", buscador);
 
-                ad.Fill(dt);
+                ad.Fill(dt); 
             }
             catch (Exception e)
             {

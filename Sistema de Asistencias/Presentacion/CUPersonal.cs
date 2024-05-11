@@ -56,6 +56,9 @@ namespace Sistema_de_Asistencias.Presentacion
             DataTable dt = new DataTable();
             funcion.BuscarPersonal(ref dt, Convert.ToInt32(labelNumerador.Text), Convert.ToInt32(labelDenominador.Text), textBoxBuscarPers.Text);
             dataGridView1.DataSource = dt;
+            dataGridView1.Columns[5].Visible = false;
+            dataGridView1.Columns[8].Visible = false;
+            dataGridView1.Columns[9].Visible = false;
         }
 
         private void buttonEliminar_Click(object sender, EventArgs e)
@@ -124,11 +127,19 @@ namespace Sistema_de_Asistencias.Presentacion
 
                 parametros.IdPersonal = (int)dataGridView1.SelectedCells[0].Value;
                 parametros.Nombre = (string)dataGridView1.SelectedCells[1].Value;
-                parametros.Identificacion = (string)dataGridView1.SelectedCells[2].Value;
-                parametros.SueldoHora = (decimal?)dataGridView1.SelectedCells[3].Value;
-                parametros.IdCargo = (int)dataGridView1.SelectedCells[5].Value;
+                parametros.Identificacion = (int)dataGridView1.SelectedCells[2].Value;
+                parametros.SueldoHora = (decimal)dataGridView1.SelectedCells[3].Value;
+
+                //parametros.IdCargo = (int)dataGridView1.SelectedCells[5].Value;
+
+                int idCargo;
+                if (int.TryParse(dataGridView1.SelectedCells[5].Value.ToString(), out idCargo))
+                {
+                    parametros.IdCargo = idCargo;
+                }
+
                 parametros.Estado = (string)dataGridView1.SelectedCells[6].Value;
-                parametros.Codigo = (string)dataGridView1.SelectedCells[7].Value;
+                parametros.Codigo = (int)dataGridView1.SelectedCells[7].Value;
                 parametros.IdPais = (int)dataGridView1.SelectedCells[8].Value;
 
                 //if (dataGridView1.SelectedCells[9].Value.ToString() != "")
@@ -165,7 +176,7 @@ namespace Sistema_de_Asistencias.Presentacion
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            Metodos.DiseñoEliminados(ref dataGridView1);
+            //Metodos.DiseñoEliminados(ref dataGridView1);
         }
 
         private void buttonAtras_Click(object sender, EventArgs e)
@@ -198,7 +209,6 @@ namespace Sistema_de_Asistencias.Presentacion
             }
             catch (Exception e)
             {
-
                 MessageBox.Show(e.Message);
             }
         }
@@ -211,6 +221,23 @@ namespace Sistema_de_Asistencias.Presentacion
             PagActual = 1;
 
             Paginar();
+        }
+
+        private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            string valor = dataGridView1.Rows[e.RowIndex].Cells[6].Value?.ToString();
+
+            // Verifica si el valor en la columna 4 es "Eliminado" y cambia el color de toda la fila
+            if (valor != null && valor == "Eliminado")
+            {
+                dataGridView1.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Red;
+                dataGridView1.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Color.White;
+            }
+            else
+            {
+                dataGridView1.Rows[e.RowIndex].DefaultCellStyle.BackColor = dataGridView1.DefaultCellStyle.BackColor;
+                dataGridView1.Rows[e.RowIndex].DefaultCellStyle.ForeColor = dataGridView1.DefaultCellStyle.ForeColor;
+            }
         }
     }
 }

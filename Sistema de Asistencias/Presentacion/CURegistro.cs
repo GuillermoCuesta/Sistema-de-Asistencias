@@ -3,6 +3,7 @@ using Sistema_de_Asistencias.Logica;
 using System;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Threading;
 using System.Windows.Forms;
@@ -50,18 +51,52 @@ namespace Sistema_de_Asistencias.Presentacion
             DPersonal funcion = new DPersonal();
 
             parametros.Nombre = textBoxNomApell.Text;
-            parametros.Identificacion = textBoxIdent.Text;
+            parametros.Identificacion =Convert.ToInt32(textBoxIdent.Text);
             parametros.IdPais = comboBoxPais.SelectedIndex;
             parametros.IdCargo = comboBoxCargo.SelectedIndex;
             parametros.SueldoHora = Convert.ToDecimal(textBoxSueldo.Text);
             parametros.Estado = comboBoxEstado.Text;
-            parametros.Codigo = textBoxCodigo.Text;
+            parametros.Codigo = Convert.ToInt32 (textBoxCodigo.Text);
+
+            //using (MemoryStream ms = new MemoryStream())
+            //{
+            //    pictureBoxUsuario.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+            //    parametros.Foto = ms.ToArray();
+            //}
 
             using (MemoryStream ms = new MemoryStream())
             {
+                // Imagen original en formato JPEG
                 pictureBoxUsuario.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
-                parametros.Foto = ms.ToArray();
+
+                // Cargar la imagen original en un objeto Bitmap
+                using (Bitmap bmpOriginal = new Bitmap(ms))
+                {
+                    // Crear un nuevo objeto Bitmap con una calidad menor (por ejemplo, calidad 50)
+                    using (Bitmap bmpReducido = new Bitmap(bmpOriginal.Width, bmpOriginal.Height))
+                    {
+                        using (Graphics graphics = Graphics.FromImage(bmpReducido))
+                        {
+                            graphics.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighSpeed;
+                            graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.Low;
+                            graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighSpeed;
+                            graphics.DrawImage(bmpOriginal, 0, 0, bmpOriginal.Width, bmpOriginal.Height);
+                        }
+
+                        // Guardar el nuevo objeto Bitmap en un MemoryStream con calidad reducida
+                        using (MemoryStream reducedMs = new MemoryStream())
+                        {
+                            bmpReducido.Save(reducedMs, System.Drawing.Imaging.ImageFormat.Jpeg);
+
+                            // Asignar la imagen reducida a parametros.Foto
+                            parametros.Foto = reducedMs.ToArray();
+                        }
+                    }
+                }
             }
+
+
+
 
             funcion.InsertarPersonal(parametros);
         }
@@ -88,7 +123,7 @@ namespace Sistema_de_Asistencias.Presentacion
             cargarC.cargarCargo(ref dt);
             comboBoxCargo.DataSource = dt;
             comboBoxCargo.ValueMember = "sueldoHora";
-            comboBoxCargo.DisplayMember = "nombre_cargo";
+            comboBoxCargo.DisplayMember = "nombreCargo";
             limpiar();
 
             DPais cargarP = new DPais();
@@ -107,6 +142,7 @@ namespace Sistema_de_Asistencias.Presentacion
         private void buttonAddCargo_Click_1(object sender, EventArgs e)
         {
             CUCargo nuevo = new CUCargo();
+            nuevo.Owner = this;
             nuevo.Show();
         }
 
@@ -138,11 +174,11 @@ namespace Sistema_de_Asistencias.Presentacion
                 pictureBoxUsuario.Image = imagen;
             }
             textBoxNomApell.Text = parametros.Nombre;
-            textBoxIdent.Text = parametros.Identificacion;
+            textBoxIdent.Text = Convert.ToString(parametros.Identificacion);
             comboBoxPais.SelectedIndex = (int)parametros.IdPais;
             comboBoxCargo.SelectedIndex = (int)parametros.IdCargo;
             comboBoxEstado.Text = parametros.Estado;
-            textBoxCodigo.Text = parametros.Codigo;
+            textBoxCodigo.Text = parametros.Codigo.ToString();
             textBoxSueldo.Text = parametros.SueldoHora.ToString();
         }
 
@@ -164,12 +200,12 @@ namespace Sistema_de_Asistencias.Presentacion
             DPersonal funcion = new DPersonal();
 
             this.parametros.Nombre = textBoxNomApell.Text;
-            this.parametros.Identificacion = textBoxIdent.Text;
+            this.parametros.Identificacion = Convert.ToInt32 (textBoxIdent.Text);
             this.parametros.IdPais = comboBoxPais.SelectedIndex;
             this.parametros.IdCargo = comboBoxCargo.SelectedIndex;
             this.parametros.SueldoHora = Convert.ToDecimal(textBoxSueldo.Text);
             this.parametros.Estado = comboBoxEstado.Text;
-            this.parametros.Codigo = textBoxCodigo.Text;
+            this.parametros.Codigo = Convert.ToInt32(textBoxCodigo.Text);
             // pictureBox1 es el nombre del PictureBox que contiene la imagen que quieres almacenar
             ImageConverter converter = new ImageConverter();
 

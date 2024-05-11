@@ -140,7 +140,7 @@ namespace Sistema_de_Asistencias.Datos
             try
             {
                 Conexion.abrir();
-                SqlCommand cmd = new SqlCommand("SELECT MAX(ID_USUARIO) FROM USUARIO;", Conexion.conectar);
+                SqlCommand cmd = new SqlCommand("SELECT MAX(IdUsuario) FROM USUARIO;", Conexion.conectar);
                 cmd.CommandType = CommandType.Text;
                 idUsuario = (int)await cmd.ExecuteScalarAsync();
             }
@@ -155,6 +155,24 @@ namespace Sistema_de_Asistencias.Datos
             return idUsuario;
         }
 
+        public async Task<bool> ValdiarUsuario(string usuario, string clave)
+        {
+            try
+            {
+                Conexion.abrir();
+                SqlCommand cmd = new SqlCommand("ValidarIngreso", Conexion.conectar);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("Usuario", usuario);
+                cmd.Parameters.AddWithValue("Clave", clave);
+
+                return (bool)await cmd.ExecuteScalarAsync(); ;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
 
     }
 }

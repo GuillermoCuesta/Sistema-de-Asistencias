@@ -47,14 +47,15 @@ namespace Sistema_de_Asistencias.Presentacion
 
         public void Actualizar(object sender, NewFrameEventArgs eventArgs)
         {
-
             Bitmap image = (Bitmap)eventArgs.Frame.Clone();
             image.RotateFlip(RotateFlipType.Rotate180FlipNone);
 
-            pictureBoxVideo.Image = image;
-            pictureBoxVideo.SizeMode = PictureBoxSizeMode.StretchImage;
-
+            pictureBoxVideo.Invoke((MethodInvoker)delegate {
+                pictureBoxVideo.Image = image;
+                pictureBoxVideo.SizeMode = PictureBoxSizeMode.StretchImage;
+            });
         }
+
 
         private void buttonGrabar_Click(object sender, EventArgs e)
         {
@@ -90,7 +91,7 @@ namespace Sistema_de_Asistencias.Presentacion
         public event EventHandler EventoOcurrido;
         private void buttonGuardar_Click(object sender, EventArgs e)
         {
-            pictureBoxImagen.Image.Save("Foto.jpg", ImageFormat.Jpeg);
+            pictureBoxImagen.Image.Save("Foto.jpeg", ImageFormat.Jpeg);
             this.DialogResult = DialogResult.OK;
             this.Close();
         }

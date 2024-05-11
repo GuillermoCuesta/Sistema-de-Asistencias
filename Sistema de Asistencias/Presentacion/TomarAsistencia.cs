@@ -35,13 +35,14 @@ namespace Sistema_de_Asistencias.Presentacion
             Contador = dt.Rows.Count;
             if (Contador > 0)
             {
-                fechaRegistro = (DateTime)dt.Rows[0]["Fecha_entrada"];
-                horaRegistro = (TimeSpan)dt.Rows[0]["Hora_entrada"];
+                fechaRegistro = (DateTime)dt.Rows[0]["fechaEntrada"];
+                horaRegistro = (TimeSpan)dt.Rows[0]["horaEntrada"];
                 labelDatosEntrada.Text = $"Entrada registrada el {fechaRegistro.ToShortDateString()} a las {horaRegistro}";
                 return true;
             }
             else
             {
+                labelDatosEntrada.Text = "No se encuentran entradas registradas activas!";
                 return false;
             }
 
@@ -57,7 +58,7 @@ namespace Sistema_de_Asistencias.Presentacion
             if (dt.Rows.Count > 0)
             {
                 identificacion = dt.Rows[0]["identificacion"].ToString();
-                idPersonal = (Int32)dt.Rows[0]["id_personal"];
+                idPersonal = (Int32)dt.Rows[0]["idPersonal"];
                 nombre = labelNombre.Text = dt.Rows[0]["nombre"].ToString();
                 BuscarAsistencia();
 
@@ -85,9 +86,7 @@ namespace Sistema_de_Asistencias.Presentacion
             if (funcion.InsertarAsistemcia(asistencia) == true)
             {
                 MessageBox.Show($"La Entrada de {nombre}, ha sido registrada exitosamente a las {asistencia.HoraEntrada}", MessageBoxButtons.OK.ToString());
-                textBoxIdentAsis.Clear();
-                labelNombre.Text = "";
-                textBoxObservaciones.Clear();
+                Limpiar();
             }
         }
 
@@ -104,12 +103,17 @@ namespace Sistema_de_Asistencias.Presentacion
             if (funcion.InsertarSalida(asistencia) == true)
             {
                 MessageBox.Show($"La Salida de {nombre}, ha sido registrada exitosamente a las {asistencia.HoraSalida}", MessageBoxButtons.OK.ToString());
-                textBoxIdentAsis.Clear();
-                textBoxObservaciones.Clear();
-                labelDatosEntrada.Text = "";
+                Limpiar();
             }
         }
 
+        private void Limpiar()
+        {
+            labelNombre.Text = "";
+            textBoxIdentAsis.Clear();
+            textBoxObservaciones.Clear();
+            labelDatosEntrada.Text = "";
+        }
 
         private int CalcularHorasTranscurridas()
         {

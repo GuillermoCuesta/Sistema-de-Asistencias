@@ -42,7 +42,7 @@ namespace Sistema_de_Asistencias.Logica
             {
                 string estado;
                 estado = row.Cells["estado"].Value.ToString();
-                if (estado == "Eliminado")
+                 if (estado == "Eliminado")
                 {
                     row.DefaultCellStyle.ForeColor = Color.Red;
                 }

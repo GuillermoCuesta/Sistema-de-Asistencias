@@ -174,7 +174,7 @@ namespace Sistema_de_Asistencias.Datos
             try
             {
                 Conexion.abrir();
-                SqlCommand cmd = new SqlCommand("Select Count(id_personal) from Personal", Conexion.conectar);
+                SqlCommand cmd = new SqlCommand("Select Count(idPersonal) from Personal", Conexion.conectar);
                 contador = (int)cmd.ExecuteScalar();
             }
             catch (Exception e)

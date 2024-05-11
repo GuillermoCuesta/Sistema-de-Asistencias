@@ -4,7 +4,9 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -105,7 +107,7 @@ namespace Sistema_de_Asistencias.Presentacion
 
             checkedListBoxPermisos.DataSource = dt;
             checkedListBoxPermisos.DisplayMember = "modulo";
-            checkedListBoxPermisos.ValueMember = "id_modulo";
+            checkedListBoxPermisos.ValueMember = "idModulo";
         }
 
         private async void ValidarPermisos()
@@ -165,9 +167,59 @@ namespace Sistema_de_Asistencias.Presentacion
             parametro.NombreApellido = textBoxNomApell.Text;
             parametro.Usuario1 = textBoxUsuario.Text;
             parametro.Contraseña = textBoxContraseña.Text;
+
+
+
+            //Image imagenDesdePictureBox = pictureBoxIcono.Image;
+
+            //// Convierte la imagen en un arreglo de bytes
+            //byte[] bytesDeImagen = null;
+
+            //if (imagenDesdePictureBox != null)
+            //{
+            //    using (MemoryStream ms = new MemoryStream())
+            //    {
+            //        // Convierte la imagen a una matriz de bytes
+            //        imagenDesdePictureBox.Save(ms, imagenDesdePictureBox.RawFormat);
+            //        bytesDeImagen = ms.ToArray();
+            //    }
+            //}
+
+            //parametro.Icono = bytesDeImagen;
+
             ImageConverter converter = new ImageConverter();
-            parametro.Icono = (byte[])converter.ConvertTo(pictureBoxIcono.Image, typeof(byte[]));
+            try
+            {
+                parametro.Icono = (byte[])converter.ConvertTo(pictureBoxIcono.Image, typeof(byte[]));
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            
             await funcion.EditarUsuarioAsync(parametro);
+        }
+
+        public static byte[] ImageToByteArray(Image imageIn)
+        {
+            try
+            {
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    imageIn.Save(ms, ImageFormat.Jpeg); // Intenta con JPEG u otro formato
+                    return ms.ToArray();
+                }
+            }
+            catch (ExternalException ex)
+            {
+                Console.WriteLine("Error de GDI+: " + ex.Message);
+                throw;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Otro error al convertir la imagen a bytes: " + ex.Message);
+                throw;
+            }
         }
 
         private void Limpiar()
@@ -201,8 +253,6 @@ namespace Sistema_de_Asistencias.Presentacion
                 MessageBox.Show(e.Message);
             }
         }
-
-
         private void CargarIcono()
         {
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
@@ -235,7 +285,7 @@ namespace Sistema_de_Asistencias.Presentacion
         {
             if (dataGridViewUsuarios.SelectedRows.Count > 0)
             {
-                idUsuario = (int)dataGridViewUsuarios.SelectedCells[0].Value;
+                idUsuario = Convert.ToInt32(dataGridViewUsuarios.SelectedCells[0].Value);
                 textBoxNomApell.Text = (string)dataGridViewUsuarios.SelectedCells[1].Value;
                 textBoxUsuario.Text = (string)dataGridViewUsuarios.SelectedCells[2].Value;
                 textBoxContraseña.Text = (string)dataGridViewUsuarios.SelectedCells[3].Value;
@@ -246,13 +296,11 @@ namespace Sistema_de_Asistencias.Presentacion
                     Image imagen = Image.FromStream(ms);
                     pictureBoxIcono.Image = imagen;
                 }
-
             }
             else
             {
                 MessageBox.Show("Seleccione un usuario primero", "Error", MessageBoxButtons.OK);
             }
-
         }
 
         private async void CambiarVisibilidadRegistro()
@@ -272,8 +320,6 @@ namespace Sistema_de_Asistencias.Presentacion
             Limpiar();
             await MostrarModulos();
         }
-
-
 
         private async Task ModificarPermisos()
         {
@@ -330,7 +376,5 @@ namespace Sistema_de_Asistencias.Presentacion
                 }
             }
         }
-
-
     }
 }

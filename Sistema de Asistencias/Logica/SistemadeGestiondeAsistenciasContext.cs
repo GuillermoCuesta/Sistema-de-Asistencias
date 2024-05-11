@@ -32,7 +32,7 @@ namespace Sistema_de_Asistencias.Logica
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Server=MEMO\\SERVER; Database=Sistema de Gestion de Asistencias; User=sa; Password=2109; Trusted_Connection=False;");
+                optionsBuilder.UseSqlServer("Data Source=MEMO;User ID=sa;Password=2109;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False;");
             }
         }
 

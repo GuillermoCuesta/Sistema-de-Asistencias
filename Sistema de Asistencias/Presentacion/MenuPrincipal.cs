@@ -3,7 +3,8 @@ using System.Windows.Forms;
 
 namespace Sistema_de_Asistencias.Presentacion
 {
-    public partial class MenuPrincipal : MaterialSkin.Controls.MaterialForm
+    public partial class MenuPrincipal : Form
+        //MaterialSkin.Controls.MaterialForm
     {
         public MenuPrincipal()
         {
@@ -56,6 +57,7 @@ namespace Sistema_de_Asistencias.Presentacion
         private void buttonRegistro_Click(object sender, EventArgs e)
         {
             TomarAsistencia asis = new TomarAsistencia();
+            asis.Owner = this;
             asis.Show();
         }
     }

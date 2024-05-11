@@ -16,12 +16,12 @@ namespace Sistema_de_Asistencias.Logica
 
         public int IdPersonal { get; set; }
         public string Nombre { get; set; }
-        public string Identificacion { get; set; }
+        public int Identificacion { get; set; }
         public int IdPais { get; set; }
         public int IdCargo { get; set; }
-        public decimal? SueldoHora { get; set; }
+        public decimal SueldoHora { get; set; }
         public string Estado { get; set; }
-        public string Codigo { get; set; }
+        public int Codigo { get; set; }
         public byte[] Foto { get; set; }
 
         public virtual Cargo IdCargoNavigation { get; set; }
